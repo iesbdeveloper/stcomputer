@@ -9,5 +9,15 @@ package inc.hardware.storage;
  * Sector size = 512 bytes
  */
 public class HardDisk10M extends HardDisk {
+    private final long iD;
+    private final List<HardDiskHead> diskHeadList  = new LinkedList<HardDiskHead>();
+    public long getiD() {
+        return iD;
+    }
+
+    public List<HardDiskHead> getDiskHeadList() {
+        return diskHeadList;
+    }
+
 
 }
