@@ -9,5 +9,7 @@ package inc.hardware.storage;
  * Sector size = 512 bytes
  */
 public class HardDisk10M extends HardDisk {
-
+    public HardDisk10M() {
+        super(4, 305, 17, 512);
+    }
 }
