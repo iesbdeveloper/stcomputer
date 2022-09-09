@@ -12,7 +12,14 @@ public class HardDisk {
     }
     protected HardDiskSector getEmptySector()
     {
-
+        for (HardDiskHead disc : diskHeadList ) {
+            for (HardDiskTrack diskTrack : disc.getDiskTrackList()) {
+                HardDiskSector sector = diskTrack.createSector();
+                if (sector != null)
+                    return sector
+            }
+        }
+        return null;
     }
     private long write()
     {

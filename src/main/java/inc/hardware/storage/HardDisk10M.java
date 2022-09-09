@@ -10,14 +10,17 @@ package inc.hardware.storage;
  */
 public class HardDisk10M extends HardDisk {
     private final long iD;
-    private final List<HardDiskHead> diskHeadList  = new LinkedList<HardDiskHead>();
+
+    public List<HardDiskTrack> getDiskHeadTrack() {
+        return diskHeadTrack;
+    }
+
+
     public long getiD() {
         return iD;
     }
 
-    public List<HardDiskHead> getDiskHeadList() {
-        return diskHeadList;
-    }
+
 
 
 }

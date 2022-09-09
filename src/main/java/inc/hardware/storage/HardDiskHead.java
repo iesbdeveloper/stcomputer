@@ -12,7 +12,7 @@ public class HardDiskHead {
         return diskTrackList;
     }
 
-    private final List<HardDiskTrack> diskTrackList = new LinkedList<HardDiskTrack>();
+    private final List<HardDiskTrack> diskHeadTrack;
     public HardDiskHead(long iD) {
         this.iD = iD;
     }

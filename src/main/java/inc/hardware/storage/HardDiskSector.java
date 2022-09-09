@@ -3,9 +3,9 @@ package inc.hardware.storage;
 public class HardDiskSector {
     private final long iD;
     private byte[] dado;
-    public HardDiskSector(long iD, byte[] dado) {
+    public HardDiskSector(long iD, long size) {
         this.iD = iD;
-        this.dado = dado;
+        this.dado = new byte[size];
     }
     public long getiD() {
         return iD;
