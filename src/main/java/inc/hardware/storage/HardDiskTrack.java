@@ -3,18 +3,22 @@ import java.util.*;
 import storage.*;
 public class HardDiskTrack {
     private final long id;
-    private final long head;
+    private final long heads;
     private final long sizeOfSector;
 
 
 
     private final List<HardDiskSector> sectorList ;
 
-    public HardDiskTrack(long id, long head, long sizeOfSector, List<HardDiskSector> sectorList) {
+    public HardDiskTrack(long id, long heads, long sizeOfSector) {
         this.id = id;
-        this.head = head;
+        this.heads = heads;
         this.sizeOfSector = sizeOfSector;
         this.sectorList = new java.util.LinkedList<HardDiskSector>();
+        for (long head = 1 ; head < heads ; head++)
+        {
+            sectorList.add(new HardDiskSector(head,sizeOfSector));
+        }
     }
 
     public long getId() {

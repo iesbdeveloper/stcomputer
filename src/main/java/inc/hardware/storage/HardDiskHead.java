@@ -2,6 +2,8 @@ package inc.hardware.storage;
 import java.util.*;
 import storage.*;
 public class HardDiskHead {
+
+
     private final long iD;
 
     public long getiD() {
@@ -13,7 +15,12 @@ public class HardDiskHead {
     }
 
     private final List<HardDiskTrack> diskHeadTrack;
-    public HardDiskHead(long iD) {
+    public HardDiskHead(long id, long tracks, long sectors, long sectorSize) {
         this.iD = iD;
+        this.diskHeadTrack = new java.util.LinkedList<HardDiskTrack>();
+        for (long track = 1 ; track < tracks; track++)
+        {
+            this.diskHeadTrack.add(new HardDiskTrack(track,sectors,sectorSize));
+        }
     }
 }

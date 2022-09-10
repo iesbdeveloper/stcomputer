@@ -5,9 +5,9 @@ public class HardDisk {
     private final List<HardDiskHead> diskHeadList
     public HardDisk(long track, long heads, long sector, long sectorSize) {
         this.diskHeadList= new LinkedList<HardDiskHead>();
-        for (long head = 0; head < heads; head++ )
+        for (long head = 1; head < heads; head++ )
         {
-
+            diskHeadList.add(new HardDiskHead());
         }
     }
     protected HardDiskSector getEmptySector()
@@ -16,7 +16,7 @@ public class HardDisk {
             for (HardDiskTrack diskTrack : disc.getDiskTrackList()) {
                 HardDiskSector sector = diskTrack.createSector();
                 if (sector != null)
-                    return sector
+                    return sector;
             }
         }
         return null;
