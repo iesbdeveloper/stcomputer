@@ -6,7 +6,7 @@ import inc.hardware.sound.Beep;
 
 import java.awt.*;
 
-public class PAsusMotherboard implements Motherboard {
+public class PAsusMotherboard implements Motherboard { //a
 
     private PCIE16X pcie1;
     private PCIE16X pcie2;
