@@ -26,28 +26,50 @@ public class PAsusMotherboard implements Motherboard {
     @Override
     public Dimension getVideoResolution() throws VideoNotFoundException {
         //TODO: Ask to video card!!
+        if (pcie1.getType() == PCIE16X.PeripheralType.VideoCard)
+            {
+
+            }
+        else if (pcie2.getType() == PCIE16X.PeripheralType.VideoCard)
+            {
+
+            }
+        else if (pcie3.getType() == PCIE16X.PeripheralType.VideoCard)
+            {
+
+            }
+        else if (onboardVideo.getType() == PCIE16X.PeripheralType.VideoCard)
+            {
+
+            }
         throw new VideoNotFoundException();
     }
 
     @Override
     public void connectUsb(Usb peripheral) {
         if(usb1 == null){
-            usb1 = new Usb();
+            usb1 = new Usb()
+            {
+            };
         } else if(usb2 == null){
-            usb2 = new Usb();
+            usb2 = new Usb()
+            {
+            };
         } else if(usb3 == null){
-            usb3 = new Usb();
+            usb3 = new Usb()
+            {
+            };
         }
     }
 
     @Override
     public void removeUsb(Usb slot) {
         if(usb1 != null){
-            usb1 == null;
+            usb1 = null;
         } if(usb2 != null){
-            usb2 == null;
+            usb2 = null;
         } if(usb3 != null){
-            usb3 == null;
+            usb3 = null;
         }
     }
 
@@ -80,11 +102,11 @@ public class PAsusMotherboard implements Motherboard {
     @Override
     public void removePcie(PCIE16X slot) {
         if(pcie1 != null){
-            pcie1 == null;
+            pcie1 = null;
         } else if (pcie2 != null){
-            pcie2 == null;
+            pcie2 = null;
         } else if (pcie3 != null){
-            pcie3 == null;
+            pcie3 = null;
         }
     }
 
