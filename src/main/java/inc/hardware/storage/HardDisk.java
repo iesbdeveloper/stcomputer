@@ -1,13 +1,15 @@
 package inc.hardware.storage;
 import java.util.*;
-import storage.*;
+
 public class HardDisk {
-    private final List<HardDiskHead> diskHeadList
-    public HardDisk(long track, long heads, long sector, long sectorSize) {
+    private final List<HardDiskHead> diskHeadList;
+    private final long iD;
+    public HardDisk(long id,long track, long heads, long sector, long sectorSize) {
+        this.iD = id;
         this.diskHeadList= new LinkedList<HardDiskHead>();
         for (long head = 1; head < heads; head++ )
         {
-            diskHeadList.add(new HardDiskHead());
+            diskHeadList.add(new HardDiskHead(head,track,sector,sectorSize));
         }
     }
     protected HardDiskSector getEmptySector()

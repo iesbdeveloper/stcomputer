@@ -1,6 +1,5 @@
 package inc.hardware.storage;
 import java.util.*;
-import storage.*;
 public class HardDiskTrack {
     private final long id;
     private final long heads;
@@ -14,10 +13,11 @@ public class HardDiskTrack {
         this.id = id;
         this.heads = heads;
         this.sizeOfSector = sizeOfSector;
-        this.sectorList = new java.util.LinkedList<HardDiskSector>();
+        String l = String.valueOf(sizeOfSector);
+        this.sectorList = new LinkedList<HardDiskSector>();
         for (long head = 1 ; head < heads ; head++)
         {
-            sectorList.add(new HardDiskSector(head,sizeOfSector));
+            sectorList.add(new HardDiskSector(head,Integer.parseInt(l)));
         }
     }
 

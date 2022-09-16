@@ -9,16 +9,13 @@ package inc.hardware.storage;
  * Sector size = 512 bytes
  */
 public class HardDisk10M extends HardDisk {
-    private final long iD;
 
-    public List<HardDiskTrack> getDiskHeadTrack() {
-        return diskHeadTrack;
+    public HardDisk10M(long id, long track, long heads, long sector, long sectorSize) {
+        super(id, track, heads, sector, sectorSize);
     }
 
-
-    public long getiD() {
-        return iD;
-    }
+   
+   
 
 
 
