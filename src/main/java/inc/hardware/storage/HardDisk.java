@@ -1,7 +1,8 @@
 package inc.hardware.storage;
+import inc.hardware.interfaces.Sata;
 import java.util.*;
 
-public class HardDisk {
+public class HardDisk implements Sata {
     private final List<HardDiskHead> diskHeadList;
     private final long iD;
     public HardDisk(long id,long track, long heads, long sector, long sectorSize) {
