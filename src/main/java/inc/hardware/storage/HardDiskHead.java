@@ -14,12 +14,12 @@ public class HardDiskHead {
     }
 
     private final List<HardDiskTrack> diskTrackList;
-    public HardDiskHead(long id, long tracks, long sectors, long sectorSize) {
+    public HardDiskHead(long id, long tracks, long sectors, int sectorSize) {
         this.iD = id;
         this.diskTrackList = new LinkedList<HardDiskTrack>();
         for (long track = 1 ; track < tracks; track++)
         {
-            this.diskTrackList.add(new HardDiskTrack(track,sectors,sectorSize));
+            this.diskTrackList.add(new HardDiskTrack(track * id,sectors,sectorSize));
         }
     }
 }

@@ -2,20 +2,20 @@ package inc.hardware.storage;
 
 public class HardDiskSector {
     private final long iD;
-    private byte dado[];
+    private Byte dado[];
     public HardDiskSector(long iD, int size) {
         this.iD = iD;
-        this.dado = new byte[size];
+        this.dado = new Byte[size];
     }
     public long getiD() {
         return iD;
     }
 
-    public byte[] getDado() {
+    public Byte[] getDado() {
         return dado;
     }
 
-    public void setDado(byte[] dado) {
+    public void setDado(Byte[] dado) {
         this.dado = dado;
     }
 

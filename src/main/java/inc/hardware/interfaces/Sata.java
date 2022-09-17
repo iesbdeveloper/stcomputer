@@ -4,9 +4,8 @@ import inc.hardware.so.FileSystem.ListaLigada;
 
 public interface Sata 
 {
-    public ListaLigada<long> write();
+    ListaLigada<Long> write(Byte[] dado);
     
-    public void read(int bytes);
-    
-    
+    Byte[] read(ListaLigada<Long> posicoes);
+
 }
