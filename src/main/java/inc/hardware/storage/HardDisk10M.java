@@ -11,7 +11,7 @@ package inc.hardware.storage;
 public class HardDisk10M extends HardDisk {
 
     public HardDisk10M(long id, long track, long heads, long sector, long sectorSize) {
-        super(id, track, heads, sector, sectorSize);
+        super(35246515, 305, 4, 17,512 );
     }
 
    

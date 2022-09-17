@@ -29,6 +29,11 @@ public class HardDiskTrack {
     }
     public HardDiskSector createSector()
     {
+        for (HardDiskSector hardDiskSector : sectorList) {
+            if (hardDiskSector.getDado() == null) {
+                return hardDiskSector;
+            }
+        }
         return null;
     }
 }

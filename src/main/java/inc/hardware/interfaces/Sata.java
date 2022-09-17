@@ -1,8 +1,10 @@
 package inc.hardware.interfaces;
 
+import inc.hardware.so.FileSystem.ListaLigada;
+
 public interface Sata 
 {
-    public void write(int bytes);
+    public ListaLigada<long> write();
     
     public void read(int bytes);
     

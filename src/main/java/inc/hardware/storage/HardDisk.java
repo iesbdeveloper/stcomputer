@@ -1,5 +1,6 @@
 package inc.hardware.storage;
 import inc.hardware.interfaces.Sata;
+import inc.hardware.so.FileSystem.ListaLigada;
 import java.util.*;
 
 public class HardDisk implements Sata {
@@ -18,15 +19,16 @@ public class HardDisk implements Sata {
         for (HardDiskHead disc : diskHeadList ) {
             for (HardDiskTrack diskTrack : disc.getDiskTrackList()) {
                 HardDiskSector sector = diskTrack.createSector();
-                if (sector != null)
+                if (sector.getDado() == null)
                     return sector;
             }
         }
         return null;
     }
-    private long write()
+    public ListaLigada<long> write()
     {
-        return  -1;
+        ListaLigada<long> lista = new ListaLigada<long>();
+        return lista ;
     }
 
 
