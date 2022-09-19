@@ -17,7 +17,8 @@ public class HardDiskTrack {
         this.sectorList = new LinkedList<HardDiskSector>();
         for (long head = 1 ; head < heads ; head++)
         {
-            sectorList.add(new HardDiskSector(head * id,Integer.parseInt(l)));
+            String Id = String.valueOf(id) + String.valueOf(heads);
+            sectorList.add(new HardDiskSector(Long.valueOf(Id),Integer.parseInt(l)));
         }
     }
 

@@ -1,6 +1,8 @@
 package inc.hardware.storage;
 import inc.hardware.interfaces.Sata;
 import inc.hardware.so.FileSystem.ListaLigada;
+import inc.hardware.so.FileSystem.No;
+
 import java.util.*;
 
 public class HardDisk implements Sata {
@@ -9,9 +11,16 @@ public class HardDisk implements Sata {
 
     private final int sectorSize;
 
+    private final long tracks;
+    private final long sectors;
+    private final long heads;
+
     public HardDisk(long id,long track, long heads, long sector, int sectorSize) {
         this.sectorSize = sectorSize;
         this.iD = id;
+        this.heads = heads;
+        this.tracks = track;
+        this.sectors = sector;
         this.diskHeadList= new LinkedList<HardDiskHead>();
         for (long head = 1; head < heads; head++ )
         {
@@ -32,15 +41,18 @@ public class HardDisk implements Sata {
 
     @Override
     public ListaLigada<Long> write(Byte[] dado) {
+
         ListaLigada<Long> lista = new ListaLigada<Long>();
+        Byte aux[] = new Byte[sectorSize];
+
         if(dado.length > sectorSize)
         {
             double qttySector = dado.length / sectorSize;
 
             for(double j=0; j<qttySector; j++)
             {
+                //
                 int k=0;
-                Byte aux[] = new Byte[sectorSize];
 
                 if(j>0)
                 {
@@ -52,7 +64,7 @@ public class HardDisk implements Sata {
                     if(dado[i+k] != null)
                         aux[i] = dado[i+k];
                     else
-                        aux[i] = 0;
+                        aux[i] = null;
                 }
 
                 HardDiskSector givenSector = getEmptySector();
@@ -60,11 +72,46 @@ public class HardDisk implements Sata {
                 lista.inserir(givenSector.getiD());
             }
         }
+        else{
+            for (int i=0; i<sectorSize; i++)
+            {
+                if(dado[i]!=null)
+                    aux[i] = dado[i];
+                else
+                    aux[i] = null;
+            }
+            
+            HardDiskSector givenSector = getEmptySector();
+            givenSector.setDado(aux);
+            lista.inserir(givenSector.getiD());
+        }
+
         return lista;
     }
 
     @Override
-    public Byte[] read(ListaLigada<Long> posicoes) {
-        return new Byte[0];
+    public Byte[] read(ListaLigada<Long> lista) {
+        Byte[] aux = new Byte[lista.getTamanho()*sectorSize];
+        No<Long> inaux = lista.getPrimeirono();
+
+        while (inaux != null)
+        {
+            long intraHead = Long.valueOf(String.valueOf(inaux.getElemento()).substring(0,1));
+            for (HardDiskHead head : diskHeadList)
+            {
+                if(intraHead == head.getiD())
+                {
+                    for(HardDiskTrack track : head.getDiskTrackList())
+                    {
+                        
+                    }
+                }
+            }
+            inaux = inaux.getProximo();
+        }
+
+
+
+        return aux;
     }
 }

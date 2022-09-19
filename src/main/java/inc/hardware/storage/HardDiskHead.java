@@ -1,8 +1,6 @@
 package inc.hardware.storage;
 import java.util.*;
-public class HardDiskHead {
-
-
+public class HardDiskHead{
     private final long iD;
 
     public long getiD() {
@@ -19,7 +17,8 @@ public class HardDiskHead {
         this.diskTrackList = new LinkedList<HardDiskTrack>();
         for (long track = 1 ; track < tracks; track++)
         {
-            this.diskTrackList.add(new HardDiskTrack(track * id,sectors,sectorSize));
+            String Id = String.valueOf(id) + String.valueOf(track);
+            this.diskTrackList.add(new HardDiskTrack(Long.valueOf(Id) ,sectors,sectorSize));
         }
     }
 }

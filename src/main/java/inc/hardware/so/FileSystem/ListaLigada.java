@@ -19,6 +19,19 @@ public class ListaLigada<T> extends ProcessoImpl {
         return this.tamanho ==0;
     }
 
+    public No<T> getPrimeirono()
+    {
+        return this.primeirono;
+    }
+
+    public int getTamanho()
+    {
+        return this.tamanho;
+    }
+
+
+
+
     public void inserir (T elemento){
         No<T> novono = new No<T>(elemento);
 
