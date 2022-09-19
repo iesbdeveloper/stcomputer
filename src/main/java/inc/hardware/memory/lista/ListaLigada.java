@@ -1,71 +1,71 @@
 package inc.hardware.memory.lista;
 
-import memoria.Memory1s;
-import memoria.MemoryBank;
 
-public class ListaLigada<M>  extends MemoryBank {
-    private No<T> primeiroNo;
-    private No<T> ultimoNO;
-    private int tamanho = 0;
+public class ListaLigada<T> {
 
-    public ListaLigada() {
-        this.primeiroNo = primeiroNO;
-        this.ultimoNO = ultimoNO;
-        this.tamanho = tamanho;
+    private No<T> inicio;
+    private No<T> fim;
+    private Integer tamanho = 0;
+
+
+    public int tamanho() {
+        return tamanho;
     }
+    public void inserir(T valor) {
+        No<T> novoNo = new No<T>(valor);
+        novoNo.setValor(valor);
 
-    public boolean isEmpty() {
-        return this.tamanho == 0;
-    }
-
-    public void insert(T elemento) {
-        No<T> novoNo = new No<T>(elemento);
-
-        if(isEmpty()) {
-            this.primeiroNo = novoNo;
-            this.ultimoNO = novoNo;
+        if(this.inicio == null && this.fim == null) {
+            this.inicio = novoNo;
+            this.fim = novoNo;
         }
         else {
-            this.ultimoNO.setProximo(novoNo);
-            this.ultimoNO = novoNo;
+            this.fim.setProximo(novoNo);
+            this.fim = novoNo;
         }
         this.tamanho++;
     }
 
-    public void delete(T elemento, int id_deletado) {
-        ListaLigada<Memory1s> listMemory = new ListaLigada<Memory1s>();
-        No<T> aux = (No<Memory1s>) new No<T>(elemento);
-        aux =  primeiroNo;
-
+    public void deletar(T valor) {
+        No<T> aux = null;
         No<T> anterior = null;
-        System.out.println("\n" + tamanho);
-
-        while(aux.getProximo() != null) {
-            if(aux.getElemento() == id_deletado) {
+        aux = inicio;
+        System.out.println("/n " + tamanho);
+        while(aux != null) {
+            if(aux.getValor() == valor) {
                 if(anterior == null) {
-                    primeiroNo = (No<T>) aux.getProximo();
+                    inicio = aux.getProximo();
+                }
+                else {
+                    anterior.setProximo(aux.getProximo());
                 }
             }
+            this.tamanho--;
         }
-    }
-
-    @Override
-    public long getSize() {
-        return 0;
-    }
-
-    @Override
-    public int getStartAddress() {
-        return 0;
-    }
-
-    @Override
-    public void read(int startAddress, byte[] readBuf, int offset, int len) {
+        anterior = aux;
+        aux = aux.getProximo();
+        System.out.println(tamanho);
 
     }
 
+    // Mostrando a lista
     @Override
-    public void write(int startAddress, byte[] writeBuf, int offset, int len) {
+    public String toString() {
+        if(this.inicio == null && this.fim == null) {
+            return "Lista vazia";
+        }
+        else {
+            StringBuilder sb = new StringBuilder();
+            sb.append("[");
 
+            No<T> aux = inicio;
+            while (aux != null) {
+                sb.append(aux.getValor() + " ");
+                aux = aux.getProximo();
+            }
+
+            sb.append("]");
+            return sb.toString();
+        }
     }
 }

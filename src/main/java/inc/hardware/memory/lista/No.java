@@ -1,28 +1,24 @@
 package inc.hardware.memory.lista;
 
 public class No<T> {
-    private T elemento;
+    private T valor;
     private No<T> proximo;
 
-    public No() {
+    public No(T valor) {
+        this.valor = valor;
         this.proximo = null;
     }
 
-    public No(T elemento) {
-        this.elemento = elemento;
-    }
-
-    public No(T elemento, No<T> proximo) {
-        this.elemento = elemento;
+    public No(T valor, No<T> proximo) {
+        this.valor = valor;
         this.proximo = proximo;
     }
-
-    public T getElemento() {
-        return elemento;
+    public T getValor() {
+        return valor;
     }
 
-    public void setElemento(T elemento) {
-        this.elemento = elemento;
+    public void setValor(T valor) {
+        this.valor = valor;
     }
 
     public No<T> getProximo() {
@@ -32,4 +28,6 @@ public class No<T> {
     public void setProximo(No<T> proximo) {
         this.proximo = proximo;
     }
+
+
 }
