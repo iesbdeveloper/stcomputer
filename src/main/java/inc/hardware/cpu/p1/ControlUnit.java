@@ -7,7 +7,7 @@ public class ControlUnit {
     private RegisterBank registradores;
     private Instrucoes instrucoes;
     private MemoryController memory;
-    private int instruction;
+    private int instrucao;
 
     public ControlUnit(RegisterBank registradores) {
         this.registradores = registradores;
@@ -32,15 +32,15 @@ public class ControlUnit {
 
     public void decodeExecute(){
 
-        byte x = (byte) ((instruction & 0x0F00) >> 8);
-        byte y = (byte) ((instruction & 0x00F0) >> 4);
-        byte n = (byte) (instruction & 0x00F);
-        short nnn = (short) (instruction & 0xFFF);
-        byte kk = (byte) (instruction & 0x0FF);
+        byte x = (byte) ((instrucao & 0x0F00) >> 8);
+        byte y = (byte) ((instrucao & 0x00F0) >> 4);
+        byte n = (byte) (instrucao & 0x00F);
+        short nnn = (short) (instrucao & 0xFFF);
+        byte kk = (byte) (instrucao & 0x0FF);
 
-        switch((instruction & 0xF000) >> 12){
+        switch((instrucao & 0xF000) >> 12){
             case 0x0:
-                ZeroOperations(instruction);
+                ZeroOperations(instrucao);
                 break;
             case 0x1:
                 instrucoes.jp(nnn);
