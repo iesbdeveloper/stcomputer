@@ -1,20 +1,19 @@
 package inc.hardware.so.FileSystem;
 
-public class No<T> {
+public class No <T> {
     private T elemento;
     private No<T> proximo;
 
-    public No(T elemento) {
+    public No(T elemento){
         this.elemento = elemento;
     }
-
     public No(T elemento, No<T> proximo) {
         this.elemento = elemento;
         this.proximo = proximo;
     }
 
     public T getElemento() {
-        return this.elemento;
+        return elemento;
     }
 
     public void setElemento(T elemento) {
@@ -22,7 +21,7 @@ public class No<T> {
     }
 
     public No<T> getProximo() {
-        return this.proximo;
+        return proximo;
     }
 
     public void setProximo(No<T> proximo) {

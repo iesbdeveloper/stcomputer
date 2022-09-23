@@ -9,8 +9,10 @@ public class No<T> {
     }
 
     public No(T elemento) {
+
         this.elemento = elemento;
     }
+
 
     public No(T elemento, No<T> proximo) {
         this.elemento = elemento;
@@ -18,7 +20,7 @@ public class No<T> {
     }
 
     public T getElemento() {
-        return this.elemento;
+        return elemento;
     }
 
     public void setElemento(T elemento) {
@@ -26,10 +28,11 @@ public class No<T> {
     }
 
     public No<T> getProximo() {
-        return this.proximo;
+        return proximo;
     }
 
     public void setProximo(No<T> proximo) {
         this.proximo = proximo;
     }
+
 }

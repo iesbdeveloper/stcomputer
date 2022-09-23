@@ -5,15 +5,18 @@ public class Location {
     private Location next;
 
     public Location(long start, Location next) {
+        super();
         this.start = start;
         this.next = next;
     }
 
     public long getStart() {
-        return this.start;
+        return start;
     }
 
     public void setStart(long start) {
         this.start = start;
     }
+
+
 }
