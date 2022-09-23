@@ -22,7 +22,7 @@ public class ControlUnit {
         // Aqui estamos combinando os 2 bytes para formamos uma instrução
         // Precisamos da memória!
 
-        instruction = (memory.getB(PC) << 8  | (memory.getB(PC+1)) & 0X00FF);
+        instrucao = (memory.getB(PC) << 8  | (memory.getB(PC+1)) & 0X00FF);
 
     }
 
