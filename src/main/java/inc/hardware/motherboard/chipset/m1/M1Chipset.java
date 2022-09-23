@@ -1,26 +1,27 @@
 package inc.hardware.motherboard.chipset.m1;
+import inc.hardware.*;
 
 public class M1Chipset {
 
-    public void getFreeMemory(){
+    private void getFreeMemory(){
     }
-    public void getTotalMemory(){
+    private void getTotalMemory(){
     }
-    public void connectMemory(){
+    private void connectMemory(){
     }
-    public void removeMemory(){
+    private void removeMemory(){
     }
-    public void memoryStore(){
+    private void memoryStore(){
     }
-    public void memoryLoad(){
+    private void memoryLoad(){
     }
-    public void checkMemory(){
+    private void checkMemory(){
     }
-    public void checkSata(){
+    private void checkSata(){
     }
-    public void getSpecialKey(){
+    private void getSpecialKey(){
     }
-    public void bootLoader(){
+    private void bootLoader(){
     }
 
 }
