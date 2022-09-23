@@ -1,6 +1,6 @@
 package inc.hardware.cpu.p1;
 
-public class Registradores {
+public class RegisterBank {
         //registradores de uso geral de 8 bits
         public byte[] V;
 
@@ -20,12 +20,12 @@ public class Registradores {
         public byte SP;
 
         //Inicializando os Registradores
-        public Registradores(){
+        public RegisterBank(){
             V = new byte[16];
-            I = 0;
-            atraso = 0;
-            som = 0;
-            PC = 0;
-            SP = 0;
+            I = 0x0000;
+            atraso = 0x0000;
+            som = 0x0000;
+            PC = 0x0200;
+            SP = 0x0000;
         }
 }
