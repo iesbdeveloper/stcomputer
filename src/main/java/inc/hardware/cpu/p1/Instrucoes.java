@@ -48,11 +48,11 @@ public class Instrucoes {
 
             registradores.V[x] = (byte) (registradores.V[x] + kk);
         }
-    //Função  8xy0 - LD Vx, Vy
+    /* Função  8xy0 - LD Vx, Vy
         public  void ldxy(byte x, byte y){
             registradores.V[x] = registradores.V[y];
         }
-    //Função 9xy0 - SNE Vx, Vy
+    //Função 9xy0 - SNE Vx, Vy*/
         public void snexy(byte x, byte y){
 
             if(registradores.V[x] != registradores.V[y]){
@@ -60,26 +60,27 @@ public class Instrucoes {
             }
         }
 
-    //Função Ann - LD I, addr
+    /*Função Ann - LD I, addr
         public  void ldiaddr(short address){
             registradores.I = address;
         }
+    */
 
-    //Função Bnn - JP V0, addr
+    Função Bnn - JP V0, addr //Keyboard
 
-    //Função Dxyn - DRW Vx, Vy, nibble
+    Função Dxyn - DRW Vx, Vy, nibble // Display
 
-    //Função Ex9E - SKP Vx
-    //Função ExA1 - SKNP Vx
+    Função Ex9E - SKP Vx
+    Função ExA1 - SKNP Vx
 
-    //Função Fx07 - LD Vx, DT
+    /*Função Fx07 - LD Vx, DT
         public void ldxdt(byte x){
             registradores.V[x]= registradores.atraso;
         }
 
     //Função Fx0A - LD Vx, K
 
-    //Função Fx15 - LD DT, Vx
+    Função Fx15 - LD DT, Vx
         public void lddtx(byte x){
             registradores.atraso = registradores.V[x];
         }
@@ -87,5 +88,5 @@ public class Instrucoes {
         public void ldstx(byte x){
             registradores.som = registradores.V[x];
         }
-
+        */
 }
