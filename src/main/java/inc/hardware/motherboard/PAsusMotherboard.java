@@ -2,13 +2,17 @@ package inc.hardware.motherboard;
 
 import  inc.hardware.exception.VideoNotFoundException;
 import inc.hardware.interfaces.*;
+import inc.hardware.motherboard.chipset.m1.HardDiskController;
 import inc.hardware.sound.Beep;
+import inc.hardware.storage.HardDisk;
 
 import java.awt.*;
+import java.util.Set;
 
 
 public class PAsusMotherboard implements Motherboard {
 
+    private LGA cpuSlot;
     private PCIE16X pcie1;
     private PCIE16X pcie2;
     private PCIE16X pcie3;
@@ -27,94 +31,33 @@ public class PAsusMotherboard implements Motherboard {
     @Override
     public Dimension getVideoResolution() throws VideoNotFoundException {
         //TODO: Ask to video card!!
-        if (pcie1.getType() == PCIE16X.PeripheralType.VideoCard)
-            {
 
-            }
-        else if (pcie2.getType() == PCIE16X.PeripheralType.VideoCard)
-            {
-
-            }
-        else if (pcie3.getType() == PCIE16X.PeripheralType.VideoCard)
-            {
-
-            }
-        else if (onboardVideo.getType() == PCIE16X.PeripheralType.VideoCard)
-            {
-
-            }
         throw new VideoNotFoundException();
     }
 
     @Override
     public void connectUsb(Usb peripheral) {
-        if(usb1 == null){
-            usb1 = new Usb()
-            {
-            };
-        } else if(usb2 == null){
-            usb2 = new Usb()
-            {
-            };
-        } else if(usb3 == null){
-            usb3 = new Usb()
-            {
-            };
-        }
+
     }
 
     @Override
     public void removeUsb(Usb slot) {
-        if(usb1 != null){
-            usb1 = null;
-        } if(usb2 != null){
-            usb2 = null;
-        } if(usb3 != null){
-            usb3 = null;
-        }
+
     }
 
     @Override
     public void connectPcie(PCIE16X peripheral) {
-        if(pcie1 == null){
-            pcie1 = new PCIE16X() {
-                @Override
-                public PeripheralType getType() {
-                    return null;
-                }
-            };
-        }else if(pcie2 == null){
-            pcie2 = new PCIE16X() {
-                @Override
-                public PeripheralType getType() {
-                    return null;
-                }
-            };
-        }else if(pcie3 == null){
-            pcie3 = new PCIE16X() {
-                @Override
-                public PeripheralType getType() {
-                    return null;
-                }
-            };
-        }
+
     }
 
     @Override
     public void removePcie(PCIE16X slot) {
-        if(pcie1 != null){
-            pcie1 = null;
-        } else if (pcie2 != null){
-            pcie2 = null;
-        } else if (pcie3 != null){
-            pcie3 = null;
-        }
+
     }
 
     @Override
     public void connectSata(Sata peripheral) {
-
-    }
+        chipSet.setHd(peripheral);
 
     @Override
     public void removeSata(Sata slot) {
@@ -122,8 +65,7 @@ public class PAsusMotherboard implements Motherboard {
     }
 
     @Override
-    public void connectCpu(LGA cpu) {
-
+    public void connectCpu(LGA) {
     }
 
     @Override
