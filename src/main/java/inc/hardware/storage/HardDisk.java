@@ -40,10 +40,10 @@ public class HardDisk implements Sata {
     }
 
     @Override
-    public ListaLigada<Long> write(Byte[] dado) {
+    public No<Long> write(byte[] dado) {
 
         ListaLigada<Long> lista = new ListaLigada<Long>();
-        Byte aux[] = new Byte[sectorSize];
+        byte aux[] = new byte[sectorSize];
 
         if(dado.length > sectorSize)
         {
@@ -61,10 +61,10 @@ public class HardDisk implements Sata {
 
                 for(int i=0; i<sectorSize; i++)
                 {
-                    if(dado[i+k] != null)
+                    if(dado[i+k] != 0)
                         aux[i] = dado[i+k];
                     else
-                        aux[i] = null;
+                        aux[i] = 0;
                 }
 
                 HardDiskSector givenSector = getEmptySector();
@@ -75,10 +75,10 @@ public class HardDisk implements Sata {
         else{
             for (int i=0; i<sectorSize; i++)
             {
-                if(dado[i]!=null)
+                if(dado[i]!=0)
                     aux[i] = dado[i];
                 else
-                    aux[i] = null;
+                    aux[i] = 0;
             }
             
             HardDiskSector givenSector = getEmptySector();
@@ -86,7 +86,7 @@ public class HardDisk implements Sata {
             lista.inserir(givenSector.getiD());
         }
 
-        return lista;
+        return lista.recuperarNo(0);
     }
 
     @Override
@@ -114,4 +114,6 @@ public class HardDisk implements Sata {
 
         return aux;
     }
+
+
 }
