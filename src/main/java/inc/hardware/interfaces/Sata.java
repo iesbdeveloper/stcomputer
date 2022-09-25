@@ -7,6 +7,8 @@ public interface Sata
 {
     No<Long> write(byte[] dado);
     
-    Byte[] read(ListaLigada<Long> posicoes);
+    byte[] read(No<Long> dado);
+
+    byte[] tamanho();
 
 }

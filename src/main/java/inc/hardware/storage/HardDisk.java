@@ -3,6 +3,8 @@ import inc.hardware.interfaces.Sata;
 import inc.hardware.so.FileSystem.ListaLigada;
 import inc.hardware.so.FileSystem.No;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.*;
 
 public class HardDisk implements Sata {
@@ -90,30 +92,40 @@ public class HardDisk implements Sata {
     }
 
     @Override
-    public Byte[] read(ListaLigada<Long> lista) {
-        Byte[] aux = new Byte[lista.getTamanho()*sectorSize];
-        No<Long> inaux = lista.getPrimeirono();
+    public byte[] read(No<Long> dado) {
 
-        while (inaux != null)
+        ByteArrayOutputStream Baos = new ByteArrayOutputStream();
+
+
+        while (dado != null)
         {
-            long intraHead = Long.valueOf(String.valueOf(inaux.getElemento()).substring(0,1));
-            for (HardDiskHead head : diskHeadList)
+            for (HardDiskHead diskHead: diskHeadList)
             {
-                if(intraHead == head.getiD())
+                for (HardDiskTrack diskTrack: diskHead.getDiskTrackList())
                 {
-                    for(HardDiskTrack track : head.getDiskTrackList())
+                    for (HardDiskSector diskSector: diskTrack.getSectorList())
                     {
-                        
+                        if (diskSector.getiD() == dado.getElemento())
+                        {
+                            try {
+                                Baos.write(diskSector.getDado());
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
                     }
+
                 }
+
             }
-            inaux = inaux.getProximo();
+            dado = dado.getProximo();
         }
 
-
-
-        return aux;
+        return Baos.toByteArray();
     }
 
-
+    @Override
+    public byte[] tamanho() {
+        return new byte[0];
+    }
 }
