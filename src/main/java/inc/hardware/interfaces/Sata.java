@@ -11,4 +11,5 @@ public interface Sata
 
     byte[] tamanho();
 
+    long espacoLivre();
 }

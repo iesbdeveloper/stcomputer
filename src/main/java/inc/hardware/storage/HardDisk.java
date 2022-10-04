@@ -125,7 +125,29 @@ public class HardDisk implements Sata {
     }
 
     @Override
-    public byte[] tamanho() {
+    public byte[] espacoTotal() {
         return new byte[0];
+    }
+
+    @Override
+    public long espacoLivre()
+
+    {
+        long qntty=0;
+        for (HardDiskHead diskHead: diskHeadList)
+        {
+            for (HardDiskTrack diskTrack: diskHead.getDiskTrackList())
+            {
+                for (HardDiskSector diskSector: diskTrack.getSectorList())
+                {
+                    qntty++;
+                }
+
+            }
+
+        }
+        qntty = qntty * sectorSize;
+        qntty = espacoTotal() - qntty;
+        return qntty;
     }
 }
