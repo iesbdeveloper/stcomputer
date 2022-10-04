@@ -9,7 +9,7 @@ public interface Sata
     
     byte[] read(No<Long> dado);
 
-    byte[] tamanho();
+    long espacoTotal();
 
     long espacoLivre();
 }

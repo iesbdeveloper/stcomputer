@@ -29,8 +29,8 @@ public class HardDisk implements Sata {
             diskHeadList.add(new HardDiskHead(head,track,sector,sectorSize));
         }
     }
-    protected HardDiskSector getEmptySector()
-    {
+    protected HardDiskSector getEmptySector() {
+
         for (HardDiskHead disc : diskHeadList ) {
             for (HardDiskTrack diskTrack : disc.getDiskTrackList()) {
                 HardDiskSector sector = diskTrack.createSector();
@@ -96,7 +96,6 @@ public class HardDisk implements Sata {
 
         ByteArrayOutputStream Baos = new ByteArrayOutputStream();
 
-
         while (dado != null)
         {
             for (HardDiskHead diskHead: diskHeadList)
@@ -125,14 +124,13 @@ public class HardDisk implements Sata {
     }
 
     @Override
-    public byte[] espacoTotal() {
-        return new byte[0];
+    public long espacoTotal() {
+        long espacoTotal= this.tracks * this.heads * this.sectors * this.sectorSize;
+        return espacoTotal;
     }
 
     @Override
-    public long espacoLivre()
-
-    {
+    public long espacoLivre(){
         long qntty=0;
         for (HardDiskHead diskHead: diskHeadList)
         {
@@ -142,9 +140,7 @@ public class HardDisk implements Sata {
                 {
                     qntty++;
                 }
-
             }
-
         }
         qntty = qntty * sectorSize;
         qntty = espacoTotal() - qntty;
