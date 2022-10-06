@@ -2,32 +2,38 @@ package inc.hardware.cpu.p1.instructions;
 
 import inc.hardware.cpu.p1.RegisterBank;
 
-public class FInstruction {
+/**
+ * Classe que implementa as operações de instrução, e lista
+ * e executa todas as que começam com o numero 0xF.
+ */
 
-    private int instruction;
+public class FInstruction implements InstructionOperations {
 
-    public void setInstruction(int instruction) {
-        this.instruction = instruction;
+    /* instancia a classe RegisterBank */
+    private final RegisterBank registerBank;
+
+    /* inicializa a classe FInstruction */
+    public FInstruction(RegisterBank registerBank) {
+        this.registerBank = registerBank;
     }
 
-    private RegisterBank registerBank;
+    /* categoriza e executa as operações que comecam com 0xF */
+    @Override
+    public void operations(int opcode){
 
-    byte x = (byte) ((instruction & 0x0F00) >> 8);
+        byte x = (byte) ((opcode & 0x0F00) >> 8);
 
-    public void FOperations(int instruct){
-        setInstruction(instruct);
-
-        switch (instruct & 0x00FF){
+        switch (opcode & 0x00FF){
             case 0x0007:
-                registerBank.V[x]= registerBank.atraso;
+                registerBank.v[x]= registerBank.atraso;
                 break;
             case 0x000A:
                 break;
             case 0x0015:
-                registerBank.atraso = registerBank.V[x];
+                registerBank.atraso = registerBank.v[x];
                 break;
             case 0x0018:
-                registerBank.som = registerBank.V[x];
+                registerBank.som = registerBank.v[x];
                 break;
             default:
         }

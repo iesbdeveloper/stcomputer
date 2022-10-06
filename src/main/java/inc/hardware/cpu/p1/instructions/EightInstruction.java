@@ -2,24 +2,42 @@ package inc.hardware.cpu.p1.instructions;
 
 import inc.hardware.cpu.p1.RegisterBank;
 
-public class EightInstruction {
+/**
+ * Classe que implementa as operações de instrução, e lista
+ * e executa todas as que começam com o numero 0x8.
+ */
 
-    // Criar uma interface para ControlUnit para resolver dependencia forte
+public class EightInstruction implements InstructionOperations {
 
-    private int instruction;
-    private RegisterBank registradores;
-    byte x = (byte) ((instruction & 0x0F00) >> 8);
-    byte y = (byte) ((instruction & 0x00F0) >> 4);
+    /* instancia a classe RegisterBank */
+    private final RegisterBank registerBank;
 
-    public void EigthOperations(int instruct){
-        instruction = instruct;
+    /* inicializa a classe EightInstruction */
+    public EightInstruction(RegisterBank registerBank) {
+        this.registerBank = registerBank;
+    }
 
-        switch (instruct & 0x000F){
+    /* categoriza e executa as operações que comecam com 0x8 */
+    @Override
+    public void operations(int opcode){
+        byte x = (byte) ((opcode & 0x0F00) >> 8);
+        byte y = (byte) ((opcode & 0x00F0) >> 4);
+
+        switch (opcode & 0x000F){
             case 0x0:
-                registradores.V[x] = registradores.V[y];
-                registradores.PC += 2;
+                registerBank.v[x] = registerBank.v[y];
+                registerBank.pc += 2;
                 break;
+            case 0x1:
+            case 0x2:
+            case 0x3:
+            case 0x4:
+            case 0x5:
+            case 0x6:
+            case 0x7:
+            case 0xE:
             default:
+                throw new RuntimeException("Instrução inválida.");
         }
     }
 }

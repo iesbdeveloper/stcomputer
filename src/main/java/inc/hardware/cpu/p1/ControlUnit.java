@@ -1,55 +1,58 @@
 package inc.hardware.cpu.p1;
 
-import inc.hardware.cpu.p1.instructions.EightInstruction;
-import inc.hardware.cpu.p1.instructions.GenericInstruction;
+import inc.hardware.cpu.p1.instructions.*;
 import inc.hardware.memory.MemoryController;
 
 public class ControlUnit {
 
-    private RegisterBank registradores;
+    /* instancia a classe RegisterBank */
+    private RegisterBank registerBank;
+
+    /* instancia a classe ZeroInstruction */
+    private ZeroInstruction zeroInstruction;
+
+    /* instancia a classe EightInstruction */
     private EightInstruction eightInstruction;
+
+    /* instancia a classe EInstruction */
+    private EInstruction eInstruction;
+
+    /* instancia a classe FInstruction */
+    private FInstruction fInstruction;
+
+    /* instancia a classe GenericInstruction */
     private GenericInstruction genericInstruction;
+
+    /* instancia a classe MemoryController */
     private MemoryController memory;
+
+    /* variável que indica a instrução resgatada da memória */
     private short instructionFromMemory;
 
-    public ControlUnit(RegisterBank registradores) {
-        this.registradores = registradores;
-    }
-
-    // Fetch
+    /* pega os dados do endereço de memoria */
     public void fetch(){
-        short PC = registradores.PC;
-        instructionFromMemory = (memory.getB(PC) << 8  | (memory.getB(PC+1)) & 0X00FF);
+        short pc = registerBank.pc;
+        instructionFromMemory = (memory.getB(pc) << 8  | (memory.getB(pc+1)) & 0x00FF);
     }
 
-    // Decode
-
+    /* decodifica e executa as funções */
     public void decodeExecute(){
 
         switch((instructionFromMemory & 0xF000) >> 12){
             case 0x0:
-
-                break;
-            case 0x1:
-            case 0x2:
-            case 0x3:
-            case 0x4:
-            case 0x5:
-            case 0x6:
-            case 0x7:
-            case 0x9:
-            case 0xA:
-            case 0xB:
-            case 0xC:
-                genericInstruction.GenericOperations(instructionFromMemory);
+                zeroInstruction.operations(instructionFromMemory);
                 break;
             case 0x8:
-                eightInstruction.EigthOperations(instructionFromMemory);
+                eightInstruction.operations(instructionFromMemory);
                 break;
+            case 0xE:
+                eInstruction.operations(instructionFromMemory);
+                break;
+            case 0xF:
+                fInstruction.operations(instructionFromMemory);
+                break;
+            default:
+                genericInstruction.operations(instructionFromMemory);
         }
-
     }
-
-    // Funções para instruções
-
 }
