@@ -9,28 +9,24 @@ import java.util.*;
 
 public class HardDisk implements Sata {
     private final List<HardDiskHead> diskHeadList;
-    private final long iD;
-
     private final int sectorSize;
-
     private final long tracks;
     private final long sectors;
     private final long heads;
 
-    public HardDisk(long id,long track, long heads, long sector, int sectorSize) {
-        this.sectorSize = sectorSize;
-        this.iD = id;
+    public HardDisk(long track, long heads, long sector, int sectorSize) {
         this.heads = heads;
         this.tracks = track;
         this.sectors = sector;
+        this.sectorSize = sectorSize;
         this.diskHeadList= new LinkedList<HardDiskHead>();
-        for (long head = 1; head < heads; head++ )
+        for (long head = 1; head <= heads; head++ )
         {
             diskHeadList.add(new HardDiskHead(head,track,sector,sectorSize));
         }
     }
-    protected HardDiskSector getEmptySector() {
 
+    protected HardDiskSector getEmptySector() {
         for (HardDiskHead disc : diskHeadList ) {
             for (HardDiskTrack diskTrack : disc.getDiskTrackList()) {
                 HardDiskSector sector = diskTrack.createSector();
@@ -82,7 +78,7 @@ public class HardDisk implements Sata {
                 else
                     aux[i] = 0;
             }
-            
+
             HardDiskSector givenSector = getEmptySector();
             givenSector.setDado(aux);
             lista.inserir(givenSector.getiD());
@@ -95,6 +91,7 @@ public class HardDisk implements Sata {
     public byte[] read(No<Long> dado) {
 
         ByteArrayOutputStream Baos = new ByteArrayOutputStream();
+
 
         while (dado != null)
         {
@@ -125,12 +122,10 @@ public class HardDisk implements Sata {
 
     @Override
     public long espacoTotal() {
-        long espacoTotal= this.tracks * this.heads * this.sectors * this.sectorSize;
-        return espacoTotal;
+        return (this.heads * this.tracks * this.sectors * sectorSize);
     }
-
     @Override
-    public long espacoLivre(){
+    public long espacoLivre() {
         long qntty=0;
         for (HardDiskHead diskHead: diskHeadList)
         {
@@ -140,7 +135,9 @@ public class HardDisk implements Sata {
                 {
                     qntty++;
                 }
+
             }
+
         }
         qntty = qntty * sectorSize;
         qntty = espacoTotal() - qntty;
