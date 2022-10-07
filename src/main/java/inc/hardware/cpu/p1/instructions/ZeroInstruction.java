@@ -24,7 +24,7 @@ public class ZeroInstruction implements InstructionOperations {
     }
 
     /* categoriza e executa as operações que comecam com 0x0 */
-    @Override
+    @Override 
     public void operations(int opcode) {
         switch (opcode & 0x00FF){
             case 0xEE:

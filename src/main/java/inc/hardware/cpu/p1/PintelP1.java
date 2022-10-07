@@ -116,7 +116,7 @@ import inc.hardware.interfaces.LGA;
  * Ex9E - SKP Vx
  * Pule a próxima instrução se a tecla com o valor de Vx for pressionada. Verifica o teclado
  * e, se a tecla correspondente ao valor de Vx estiver atualmente na posição para baixo,
- * PC é aumentado em 2.
+ * PC é aumentado em 2  .
  *
  * ExA1 - SKNP Vx
  * Pule a próxima instrução se a tecla com o valor de Vx não for pressionada.
