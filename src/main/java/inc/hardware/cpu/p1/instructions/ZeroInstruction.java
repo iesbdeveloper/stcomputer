@@ -2,6 +2,7 @@ package inc.hardware.cpu.p1.instructions;
 
 import inc.hardware.cpu.p1.CpuStack;
 import inc.hardware.cpu.p1.RegisterBank;
+import inc.hardware.video.OnboardVideo;
 
 /**
  * Classe que implementa as operações de instrução, e lista
@@ -15,6 +16,7 @@ public class ZeroInstruction implements InstructionOperations {
 
     /* instancia a classe CpuStack */
     private CpuStack stack;
+    private OnboardVideo onboardVideo;
 
     /* inicializa a classe ZeroInstruction */
     public ZeroInstruction(RegisterBank registerBank,
@@ -28,11 +30,12 @@ public class ZeroInstruction implements InstructionOperations {
     public void operations(int opcode) {
         switch (opcode & 0x00FF){
             case 0xEE:
+                registerBank.pc = stack.topAddress();
                 --registerBank.sp;
                 stack.popAddress();
-                registerBank.pc = stack.topAddress();
                 break;
             case 0xE0:
+                onboardVideo.clearScreen();
                 break;
             default:
                 throw new RuntimeException("Instrução inválida.");

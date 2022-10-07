@@ -1,6 +1,6 @@
 package inc.hardware.cpu.p1.instructions;
-
 import inc.hardware.cpu.p1.RegisterBank;
+import inc.hardware.input.Keyboard;
 
 /**
  * Classe que implementa as operações de instrução, e lista
@@ -12,9 +12,12 @@ public class FInstruction implements InstructionOperations {
     /* instancia a classe RegisterBank */
     private final RegisterBank registerBank;
 
+    private final Keyboard keyboard;
+
     /* inicializa a classe FInstruction */
-    public FInstruction(RegisterBank registerBank) {
+    public FInstruction(RegisterBank registerBank, Keyboard keyboard) {
         this.registerBank = registerBank;
+        this.keyboard = keyboard;
     }
 
     /* categoriza e executa as operações que comecam com 0xF */
@@ -28,6 +31,7 @@ public class FInstruction implements InstructionOperations {
                 registerBank.v[x]= registerBank.atraso;
                 break;
             case 0x000A:
+                byte key = (byte)(keyboard.);
                 break;
             case 0x0015:
                 registerBank.atraso = registerBank.v[x];

@@ -74,8 +74,11 @@ public class GenericInstruction implements InstructionOperations{
                 registerBank.i = nnn;
                 break;
             case 0xB:
+                registerBank.pc = (short) ( registerBank.v[0] & 0xff + nnn & 0xfff);
                 break;
             case 0xC:
+                break;
+            case 0xD:
                 break;
             default:
                 throw new RuntimeException("Instrução Inválida!");
