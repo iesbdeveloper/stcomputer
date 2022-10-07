@@ -5,7 +5,8 @@ public class ListaLigada<T> {
 
     private No<T> inicio;
     private No<T> fim;
-    private Integer tamanho = 0;
+    private Integer tamanho = 4096;
+    private int ref = 0;
 
 
     public int tamanho() {
@@ -68,4 +69,29 @@ public class ListaLigada<T> {
             return sb.toString();
         }
     }
+
+    public No<T> getInicio() {
+        return inicio;
+    }
+
+    public No<T> getFim() {
+        return fim;
+    }
+
+    public void setTamanho(Integer tamanho) {
+        this.tamanho =- tamanho;
+    }
+
+    public Integer getTamanho() {
+        return tamanho;
+    }
+
+    public int getRef() {
+        return ref;
+    }
+
+    public void setRef(int ref) {
+        this.ref =+ ref;
+    }
+
 }

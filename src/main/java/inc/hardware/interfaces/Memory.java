@@ -1,26 +1,13 @@
 package inc.hardware.interfaces;
 
-public interface Memory<T> {
+import inc.hardware.memory.lista.ListaLigada;
 
-    // Pega o tamanho
-    T getSize();
+public interface Memory{
 
-    // Pega o endereço
-    T getAddress();
+    long write(byte[] dados);
 
-    /*
-     * startAddress: endereço inicial
-     * readBuf: local para a leitura de dados
-     * offset: ajuda o readBuf a receber os dados
-     * len: tamanho em bytes para ler
-     * */
-    void read(T address, byte[] readBuf, int offset, int len);
+    byte[] read (Long addr);
 
-    /*
-     * startAddress: endereço inicial
-     * writeBuf: local para escrita dos dados
-     * offset: ajuda o readBuf a receber obter os dados
-     * len: tamanho em bytes para escrever
-     * */
-    void write (T address, byte[] writeBuf, int offset, int len);
+    long size();
+
 }
