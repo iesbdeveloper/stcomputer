@@ -9,12 +9,15 @@ import java.util.*;
 
 public class HardDisk implements Sata {
     private final List<HardDiskHead> diskHeadList;
+
+    private final long iD;
     private final int sectorSize;
     private final long tracks;
     private final long sectors;
     private final long heads;
 
-    public HardDisk(long track, long heads, long sector, int sectorSize) {
+    public HardDisk(long id, long track, long heads, long sector, int sectorSize) {
+        this.iD = id;
         this.heads = heads;
         this.tracks = track;
         this.sectors = sector;
@@ -35,6 +38,10 @@ public class HardDisk implements Sata {
             }
         }
         return null;
+    }
+
+    public long getiD() {
+        return this.iD;
     }
 
     @Override

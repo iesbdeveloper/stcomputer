@@ -8,9 +8,9 @@ public class HardDiskTrack {
         this.id = id;
         String l = String.valueOf(sizeOfSector);
         this.sectorList = new LinkedList<HardDiskSector>();
-        for (long head = 1 ; head <= sectors ; head++)
+        for (long sector = 1 ; sector <= sectors ; sector++)
         {
-            String Id = String.valueOf(id) + String.valueOf(sectors);
+            String Id = String.valueOf(id) + String.valueOf(sector);
             sectorList.add(new HardDiskSector(Long.valueOf(Id),Integer.parseInt(l)));
         }
     }
