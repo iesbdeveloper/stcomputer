@@ -10,10 +10,9 @@ public class HardDiskController {
     List<Sata> hd = new ArrayList<>();
     private int i;
 
-    public List<Sata> getHds() {
+    public List<Sata> getHd() {
         return hd;
     }
-
 
     public void connectSata(Sata peripheral) {
         if(hd == null){
@@ -32,6 +31,8 @@ public class HardDiskController {
             Sata hdSlot4 = new Sata;
             hd.add(hdSlot4);
             i++;
+        }else if(i == 4){
+            return;
         }
     }
 }
