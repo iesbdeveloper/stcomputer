@@ -45,13 +45,13 @@ Mencione as ferramentas que você usou para criar seu projeto
 
 ## ✒️ Autores
 
-*[Caio Falleiro](https://github.com/Falleiro)
+* [Caio Falleiro](https://github.com/Falleiro)
 
-*[Rafael Braz](https://github.com/Rarazc)
+* [Rafael Braz](https://github.com/Rarazc)
 
-*[Iago santos](https://github.com/iago-cyber)
+* [Iago santos](https://github.com/iago-cyber)
 
-*[Saulo-Dorigon](https://github.com/Saulo-Dorigon)
+* [Saulo-Dorigon](https://github.com/Saulo-Dorigon)
 
-*[EDDIE the Giant of Teas](https://github.com/EDDIE0virmond)
+* [EDDIE the Giant of Teas](https://github.com/EDDIE0virmond)
 
