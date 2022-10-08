@@ -17,6 +17,7 @@ Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar 
 ### 🔧 Instalação
 
 Baixe e instale uma IDE de sua escolha que rode a linguagem Java (Ex: Intellij)
+
 Vá em Open project, procure pelo diretório do local que realizou o git clone e selecione a pasta stcomputer
 
 ## ⚙️ Executando os testes
@@ -26,12 +27,14 @@ Executando a classe "Main.java" que está dentro de src>main>java
 ### 🔩 Analise os testes de ponta a ponta
 
 No teste ele verifica o instanciamento de um HD
+
 Testa os métodos de gravação(write) e leitura(read) de dados e o seus recebimentos e retornos de parâmetros
+
 Também testa os métodos de retorno do espaço total do HD e o espaço livre nele
 
 ## 📦 Implantação
 
-A forma de implementação de uma Hard Disk é atrás de sua interface "Sata" nela possui os métodos abstratos necessários para o funcionamento do mesmo, fala um implements Sata na classe que irá utilizar o HD
+A forma de implementação de uma Hard Disk é atrás de sua interface "Sata" nela possui os métodos abstratos necessários para o funcionamento do mesmo, faça um implements Sata na classe que irá utilizar o HD
 
 ## 🛠️ Construído com
 
