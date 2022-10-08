@@ -7,7 +7,9 @@ Branch responsavel pela implementação e desenvolvimento da parte lógica de um
 Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
 
 git clone https://github.com/iesbdeveloper/stcomputer.git
+
 cd stcomputer/
+
 git checkout Storage
 
 Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar o projeto.
