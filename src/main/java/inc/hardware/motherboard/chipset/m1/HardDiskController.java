@@ -7,17 +7,31 @@ import java.util.ArrayList;
 
 public class HardDiskController {
 
-    List<Sata> Hds = new ArrayList<>();
+    List<Sata> hd = new ArrayList<>();
+    private int i;
 
     public List<Sata> getHds() {
-        return Hds;
+        return hd;
     }
 
-    public void setHds(List<Sata> hds) {
-        Hds = hds;
-    }
 
     public void connectSata(Sata peripheral) {
-
+        if(hd == null){
+            Sata hdSlot1 = new Sata;
+            hd.add(hdSlot1);
+            i++;
+        }else if(i == 1){
+            Sata hdSlot2 = new Sata;
+            hd.add(hdSlot2);
+            i++;
+        }else if(i == 2){
+            Sata hdSlot3 = new Sata;
+            hd.add(hdSlot3);
+            i++;
+        }else if(i == 3){
+            Sata hdSlot4 = new Sata;
+            hd.add(hdSlot4);
+            i++;
+        }
     }
 }
