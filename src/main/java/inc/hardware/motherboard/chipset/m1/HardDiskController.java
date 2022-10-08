@@ -36,8 +36,16 @@ public class HardDiskController {
         }
     }
     public void removeSata(Sata peripheral){
-        if(hd != null){
+        if(i == 0) {
+            return;
+        } else if(i == 1){
             hd.remove(hdSlot1);
+        } else if(i == 2){
+            hd.remove(hdSlot2);
+        } else if(i == 3){
+            hd.remove(hdSlot3);
+        } else if(i == 4){
+            hd.remove(hdSlot4);
         }
     }
 }
