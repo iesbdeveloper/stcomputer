@@ -45,7 +45,9 @@ public class HardDisk implements Sata {
 
     @Override
     public No<Long> write(byte[] dado) {
-
+        if (espacoLivre() == 0) {
+            return null;
+        }
         ListaLigada<Long> lista = new ListaLigada<>();
         byte[] aux = new byte[sectorSize];
 
