@@ -31,7 +31,7 @@ public class FInstruction implements InstructionOperations {
                 registerBank.v[x]= registerBank.atraso;
                 break;
             case 0x000A:
-                byte key = (byte)(keyboard.);
+                //byte key = (byte)(keyboard.);
                 break;
             case 0x0015:
                 registerBank.atraso = registerBank.v[x];

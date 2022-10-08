@@ -26,14 +26,14 @@ public class EInstruction implements InstructionOperations {
         byte key = (byte)(registerBank.v[x] & 0x0F);
         switch (opcode & 0x000F){
             case 0x0001:
-                if(!keyboard.){
-                    registerBank.pc = (short) (registerBank.pc + 0x0002);
-                }
+               // if(!keyboard.keyPressed(key)){
+                //    registerBank.pc = (short) (registerBank.pc + 0x0002);
+                //}
                 break;
             case 0x000E:
-                if(keyboard.){
-                    registerBank.pc = (short) (registerBank.pc + 0x0002);
-                }
+               // if(keyboard.){
+                    //registerBank.pc = (short) (registerBank.pc + 0x0002);
+               // }
                 break;
             default:
         }

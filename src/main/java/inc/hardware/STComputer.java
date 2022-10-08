@@ -20,17 +20,17 @@ public class STComputer extends JPanel {
         motherboard.connectUsb(keyboard);
     }
 
-    public Dimension getVideoResolution() throws VideoNotFoundException {
-        return motherboard.getVideoResolution();
-    }
+    //public Dimension getVideoResolution() throws VideoNotFoundException {
+        //return motherboard.getVideoResolution();
+   // }
 
     public static void main(String[] args) throws VideoNotFoundException {
         STComputer computer = new STComputer();
 
-        Dimension resolution = computer.getVideoResolution();
-        computer.setPreferredSize(resolution);
-        computer.setMaximumSize(resolution);
-        computer.setMinimumSize(resolution);
+       // Dimension resolution = computer.getVideoResolution();
+        //computer.setPreferredSize(resolution);
+        //computer.setMaximumSize(resolution);
+        //computer.setMinimumSize(resolution);
 
         JFrame frame = new JFrame(TITLE);
         frame.add(computer);

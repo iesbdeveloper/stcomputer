@@ -35,7 +35,7 @@ public class ZeroInstruction implements InstructionOperations {
                 stack.popAddress();
                 break;
             case 0xE0:
-                onboardVideo.clearScreen();
+                // onboardVideo.clearScreen();
                 break;
             default:
                 throw new RuntimeException("Instrução inválida.");

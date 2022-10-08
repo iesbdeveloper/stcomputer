@@ -1,7 +1,7 @@
 package inc.hardware.cpu.p1;
 
 import inc.hardware.cpu.p1.instructions.*;
-import inc.hardware.memory.MemoryController;
+import inc.hardware.memory.Memory1S;
 
 public class ControlUnit {
 
@@ -24,7 +24,7 @@ public class ControlUnit {
     private GenericInstruction genericInstruction;
 
     /* instancia a classe MemoryController */
-    private MemoryController memory;
+    private Memory1S memory;
 
     /* variável que indica a instrução resgatada da memória */
     private short instructionFromMemory;
@@ -32,7 +32,7 @@ public class ControlUnit {
     /* pega os dados do endereço de memoria */
     public void fetch(){
         short pc = registerBank.pc;
-        instructionFromMemory = (memory.getB(pc) << 8  | (memory.getB(pc+1)) & 0x00FF);
+        instructionFromMemory = (short) (memory.get(pc) << 8  | (memory.get((short) (pc+1))) & 0x00FF);
     }
 
     /* decodifica e executa as funções */
