@@ -9,7 +9,6 @@ public class HardDiskController {
 
     List<Sata> hd = new ArrayList<>();
     private int i;
-
     private Sata hdSlot1;
     private Sata hdSlot2;
     private Sata hdSlot3;
@@ -21,23 +20,32 @@ public class HardDiskController {
 
     public void connectSata(Sata peripheral) {
         if(hd == null){
-            Sata hdSlot1 = new Sata;
             hd.add(hdSlot1);
             i++;
         }else if(i == 1){
-            Sata hdSlot2 = new Sata;
             hd.add(hdSlot2);
             i++;
         }else if(i == 2){
-            Sata hdSlot3 = new Sata;
             hd.add(hdSlot3);
             i++;
         }else if(i == 3){
-            Sata hdSlot4 = new Sata;
             hd.add(hdSlot4);
             i++;
         }else if(i == 4){
             return;
+        }
+    }
+    public void removeSata(Sata peripheral){
+        if(i == 0) {
+            return;
+        } else if(i == 1){
+            hd.remove(hdSlot1);
+        } else if(i == 2){
+            hd.remove(hdSlot2);
+        } else if(i == 3){
+            hd.remove(hdSlot3);
+        } else if(i == 4){
+            hd.remove(hdSlot4);
         }
     }
 }
