@@ -9,6 +9,10 @@ public class HardDiskController {
 
     List<Sata> hd = new ArrayList<>();
     private int i;
+    private Sata hdSlot1;
+    private Sata hdSlot2;
+    private Sata hdSlot3;
+    private Sata hdSlot4;
 
     public List<Sata> getHd() {
         return hd;
