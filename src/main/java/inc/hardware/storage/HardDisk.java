@@ -146,7 +146,7 @@ public class HardDisk implements Sata {
             }
 
         }
-        System.out.println(qntty);
+        //System.out.println(qntty);
         qntty = qntty * sectorSize;
         return qntty;
     }
