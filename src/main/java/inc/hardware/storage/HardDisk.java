@@ -22,7 +22,7 @@ public class HardDisk implements Sata {
         this.tracks = track;
         this.sectors = sector;
         this.sectorSize = sectorSize;
-        this.diskHeadList= new LinkedList<HardDiskHead>();
+        this.diskHeadList= new LinkedList<>();
         for (long head = 1; head <= heads; head++ )
         {
             diskHeadList.add(new HardDiskHead(head,track,sector,sectorSize));
@@ -30,14 +30,13 @@ public class HardDisk implements Sata {
     }
 
     protected HardDiskSector getEmptySector() {
+        HardDiskSector sector = null;
         for (HardDiskHead disc : diskHeadList ) {
             for (HardDiskTrack diskTrack : disc.getDiskTrackList()) {
-                HardDiskSector sector = diskTrack.createSector();
-                if (sector.getDado() == null)
-                    return sector;
+                sector = diskTrack.createSector();
             }
         }
-        return null;
+        return sector;
     }
 
     public long getiD() {
@@ -47,8 +46,8 @@ public class HardDisk implements Sata {
     @Override
     public No<Long> write(byte[] dado) {
 
-        ListaLigada<Long> lista = new ListaLigada<Long>();
-        byte aux[] = new byte[sectorSize];
+        ListaLigada<Long> lista = new ListaLigada<>();
+        byte[] aux = new byte[sectorSize];
 
         if(dado.length > sectorSize)
         {
@@ -78,9 +77,9 @@ public class HardDisk implements Sata {
             }
         }
         else{
-            for (int i=0; i<sectorSize; i++)
+            for (int i=0; i < dado.length; i++)
             {
-                if(dado[i]!=0)
+                if(dado[i] != 0)
                     aux[i] = dado[i];
                 else
                     aux[i] = 0;
@@ -140,14 +139,15 @@ public class HardDisk implements Sata {
             {
                 for (HardDiskSector diskSector: diskTrack.getSectorList())
                 {
-                    qntty++;
+                    if (diskSector.getDado() == null)
+                        qntty++;
                 }
 
             }
 
         }
+        System.out.println(qntty);
         qntty = qntty * sectorSize;
-        qntty = espacoTotal() - qntty;
         return qntty;
     }
 }
