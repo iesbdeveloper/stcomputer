@@ -3,12 +3,13 @@ package inc.hardware.motherboard;
 import inc.hardware.exception.VideoNotFoundException;
 import inc.hardware.interfaces.*;
 import inc.hardware.sound.Beep;
+import inc.hardware.video.OnboardVideo;
 
 import java.awt.*;
 
 public class PAsusMotherboard implements Motherboard {
 
-    private PCIE16X pcie1;
+    private PCIE16X pcie1 = new OnboardVideo();
     private PCIE16X pcie2;
     private PCIE16X pcie3;
     private PCIE16X onboardVideo;
