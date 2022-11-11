@@ -8,7 +8,11 @@ public class HardDiskSector {
     public HardDiskSector(long iD, int size) {
         this.iD = iD;
         this.size = size;
-        this.dado = null;
+        this.dado = new byte[size];
+        for (int i = 0; i < size; i++) {
+            this.dado[i] = -1;
+        }
+
     }
 
     public long getiD() {
