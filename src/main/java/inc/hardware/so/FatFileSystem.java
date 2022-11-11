@@ -5,12 +5,6 @@ import java.util.Arrays;
 
 public class FatFileSystem {
 
-    public static void main(String[]args) throws IOException {
-
-        converteParaString (converteParaBytes () );
-
-    }
-
     public static byte[] converteParaBytes () {
         String teste = "C://Users//r.rodrigues//Downloads//teste.txt";
 
@@ -24,9 +18,6 @@ public class FatFileSystem {
         }
     }
     public static void  converteParaString (byte []array ) throws FileNotFoundException {
-
-    String str=new String(array);
-
-
-}
+        String str=new String(array);
     }
+}

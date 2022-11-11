@@ -68,15 +68,10 @@ public class ListaLigada<T> extends ProcessoImpl {
                     aux.setElemento(null);
                     break;
                 }
-
-
             }
             anterior = (No<T>) aux;
             aux =aux.getProximo();
-
         }
-
-
         System.out.println("\n"+tamanho);
     }
 
@@ -84,9 +79,7 @@ public class ListaLigada<T> extends ProcessoImpl {
         ListaLigada <Sistema> listassistema = new ListaLigada<Sistema>();
         No<Sistema> aux = (No<Sistema>) new No<T>(elemento);
 
-
         No<T> anterior = null;
-
 
         while (aux.getElemento()!= null){
 
@@ -94,13 +87,11 @@ public class ListaLigada<T> extends ProcessoImpl {
             {
                 if (anterior == null){
                     primeirono = (No<T>) aux.getProximo();
-
                     tamanho--;
                     break;
                 } else if (aux.getElemento()==(Sistema) ultimono.getElemento()) {
                     anterior.setProximo(null);
                     ultimono = anterior;
-
                     //ultimono.setProximo(anterior.getProximo());
                     tamanho--;
                     aux.setElemento(null);
@@ -112,20 +103,13 @@ public class ListaLigada<T> extends ProcessoImpl {
                     aux.setElemento(null);
                     break;
                 }
-
-
             }
             anterior = (No<T>) aux;
             aux =aux.getProximo();
-
         }
-
-
     }
 
     public T buscararquivo (T elemento, String nome_buscado){
-
-
         No<Sistema>  aux = (No<Sistema>)new No<>(elemento);
         aux = (No<Sistema>)primeirono;
         while(aux.getElemento()!= null){
