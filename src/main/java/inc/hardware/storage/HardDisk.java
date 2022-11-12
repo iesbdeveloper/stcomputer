@@ -59,7 +59,7 @@ public class HardDisk implements Sata {
             return null;
         }
         HardDiskSector givenSector = getEmptySector();
-        String fileName = givenSector.getiD() + ".bin";
+        String fileName =  givenSector.getiD() + ".bin";
 //        //String storageUnitPath = "d:\\data";
 //
 //        Path storageUnit = Paths.get("/home/rafael/Documentos/JavaDocs/myfile.txt");
@@ -179,10 +179,9 @@ public class HardDisk implements Sata {
             {
                 for (HardDiskSector diskSector: diskTrack.getSectorList())
                 {
-                    for(int i = 0 ;i < sectorSize;i++) {
-                        if (diskSector.getDado()[i] == -1)
-                            qntty++;
-                    }
+                    if (diskSector.getDado()[0] == -1)
+                        qntty++;
+
                 }
 
             }
@@ -201,10 +200,9 @@ public class HardDisk implements Sata {
             {
                 for (HardDiskSector diskSector: diskTrack.getSectorList())
                 {
-                    for(int i = 0 ;i < sectorSize;i++) {
-                        if (diskSector.getDado()[i] != -1)
-                            qntty++;
-                    }
+                    if (diskSector.getDado()[0] != -1)
+                        qntty++;
+
                 }
             }
         }

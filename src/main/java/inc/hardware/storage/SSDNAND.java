@@ -17,7 +17,7 @@ public class SSDNAND {
         for (long sector = 1 ; sector <= sectors ; sector++)
         {
             String Id = String.valueOf(id) + String.valueOf(sector);
-            sectorList.add(new HardDiskSector(Long.valueOf(Id),Integer.parseInt(l)));
+            sectorList.add(new SSDSectors(Long.valueOf(Id),Integer.parseInt(l)));
         }
     }
 }

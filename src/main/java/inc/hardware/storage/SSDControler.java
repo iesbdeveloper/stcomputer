@@ -13,7 +13,7 @@ public class SSDControler implements Sata {
     private final List<SSDNAND> ssdnandList;
     private final long SectorSize;
 
-    public SSDControler(long id, long NANADSize,long size,long sectorsize) {
+    public SSDControler(long id, long NANADSize,long size,int sectorsize) {
         this.id = id;
         this.NANADSize = NANADSize;
         this.size = size;
@@ -21,7 +21,7 @@ public class SSDControler implements Sata {
         this.ssdnandList = new LinkedList<>();
         for (int i = 0; i < size/NANADSize; i++) {
 
-            ssdnandList.add(new SSDNAND(i,));
+            ssdnandList.add(new SSDNAND(i,NANADSize/sectorsize,sectorsize));
         }
 
 
@@ -44,6 +44,11 @@ public class SSDControler implements Sata {
 
     @Override
     public long espacoLivre() {
+        return 0;
+    }
+
+    @Override
+    public long espacoOcupado() {
         return 0;
     }
 }
