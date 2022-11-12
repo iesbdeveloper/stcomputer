@@ -2,50 +2,42 @@ package inc.hardware.motherboard.chipset.m1;
 
 import inc.hardware.interfaces.Sata;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class HardDiskController {
-
     List<Sata> hd = new ArrayList<>();
-    private int i;
-    private Sata hdSlot1;
-    private Sata hdSlot2;
-    private Sata hdSlot3;
-    private Sata hdSlot4;
 
     public List<Sata> getHd() {
         return hd;
     }
 
     public void connectSata(Sata peripheral) {
-        if(hd == null){
-            hd.add(hdSlot1);
-            i++;
-        }else if(i == 1){
-            hd.add(hdSlot2);
-            i++;
-        }else if(i == 2){
-            hd.add(hdSlot3);
-            i++;
-        }else if(i == 3){
-            hd.add(hdSlot4);
-            i++;
-        }else if(i == 4){
-            return;
-        }
+        hd.add(peripheral);
     }
-    public void removeSata(Sata peripheral){
-        if(i == 0) {
-            return;
-        } else if(i == 1){
-            hd.remove(hdSlot1);
-        } else if(i == 2){
-            hd.remove(hdSlot2);
-        } else if(i == 3){
-            hd.remove(hdSlot3);
-        } else if(i == 4){
-            hd.remove(hdSlot4);
-        }
+
+    public No<Long> write(int index, byte[] dado) {
+        Sata x = hd.get(index);
+        return x.write(dado);
     }
+
+    public byte[] read(int index, No<Long> dado) {
+        Sata x = hd.get(index);
+        return x.read(dado);
+    }
+
+    public Long getFreeSpaceHD(int index) {
+        Sata x = hd.get(index);
+        return x.espacoLivre();
+    }
+
+    public Long getSizeHD(int index) {
+        Sata x = hd.get(index);
+        return x.espacoTotal();
+    }
+
+    public void removeSata(Sata peripheral) {
+        hd.remove(peripheral);
+    }
+
 }
