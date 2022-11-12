@@ -15,5 +15,7 @@ public interface Sata
 
     //Retorna o espaço livre total em um long com o valor referente diretamente em bytes caso necessário realizar conversão dividindo por 1000 Bytes>Kb>Mb
     long espacoLivre();
+    //Retorna o espaço livre ocupado em um long
+    long espacoOcupado();
 
 }

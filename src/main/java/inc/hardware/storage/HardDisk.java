@@ -179,12 +179,34 @@ public class HardDisk implements Sata {
             {
                 for (HardDiskSector diskSector: diskTrack.getSectorList())
                 {
-                    if (diskSector.getDado()[0] == -1)
-                        qntty++;
+                    for(int i = 0 ;i < sectorSize;i++) {
+                        if (diskSector.getDado()[i] == -1)
+                            qntty++;
+                    }
                 }
 
             }
 
+        }
+        //System.out.println(qntty);
+        qntty = qntty * sectorSize;
+        return qntty;
+    }
+
+    public long espacoOcupado() {
+        long qntty=0;
+        for (HardDiskHead diskHead: diskHeadList)
+        {
+            for (HardDiskTrack diskTrack: diskHead.getDiskTrackList())
+            {
+                for (HardDiskSector diskSector: diskTrack.getSectorList())
+                {
+                    for(int i = 0 ;i < sectorSize;i++) {
+                        if (diskSector.getDado()[i] != -1)
+                            qntty++;
+                    }
+                }
+            }
         }
         //System.out.println(qntty);
         qntty = qntty * sectorSize;
