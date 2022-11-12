@@ -51,4 +51,20 @@ public class SSDControler implements Sata {
     public long espacoOcupado() {
         return 0;
     }
+
+    public long getSectorSize() {
+        return SectorSize;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public long getNANADSize() {
+        return NANADSize;
+    }
+
+    public long getSize() {
+        return size;
+    }
 }
