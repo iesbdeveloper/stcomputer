@@ -55,3 +55,5 @@ Mencione as ferramentas que você usou para criar seu projeto
 
 * [EDDIE the Giant of Teas](https://github.com/EDDIE0virmond)
 
+* [vinicius silva](https://github.com/vinicius-sj)
+

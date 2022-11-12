@@ -11,6 +11,7 @@ package inc.hardware.storage;
 public class HardDisk10M extends HardDisk {
     public HardDisk10M() {
         super(35246515,305, 4, 17,512 );
+        boot();
     }
 
 

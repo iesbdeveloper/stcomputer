@@ -3,8 +3,10 @@ import inc.hardware.interfaces.Sata;
 import inc.hardware.so.FileSystem.ListaLigada;
 import inc.hardware.so.FileSystem.No;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class HardDisk implements Sata {
@@ -30,10 +32,18 @@ public class HardDisk implements Sata {
     }
 
     protected HardDiskSector getEmptySector() {
+
         HardDiskSector sector = null;
         for (HardDiskHead disc : diskHeadList ) {
             for (HardDiskTrack diskTrack : disc.getDiskTrackList()) {
-                sector = diskTrack.createSector();
+                if (diskTrack.isFull() == false)
+                {
+                    sector = diskTrack.createSector();
+                }
+                if (diskTrack.isFull() == true)
+                {
+                    System.out.println(diskTrack.getId());
+                }
             }
         }
         return sector;
@@ -48,6 +58,11 @@ public class HardDisk implements Sata {
         if (espacoLivre() == 0) {
             return null;
         }
+        HardDiskSector givenSector = getEmptySector();
+        String fileName =  givenSector.getiD() + ".bin";
+//        //String storageUnitPath = "d:\\data";
+//
+//        Path storageUnit = Paths.get("/home/rafael/Documentos/JavaDocs/myfile.txt");
         ListaLigada<Long> lista = new ListaLigada<>();
         byte[] aux = new byte[sectorSize];
 
@@ -72,8 +87,19 @@ public class HardDisk implements Sata {
                     else
                         aux[i] = 0;
                 }
+                try
+                {
+                    ObjectOutputStream file = new ObjectOutputStream(new FileOutputStream(fileName));
+                    for (byte inter : aux) {
+                        file.writeByte(inter);
+                    }
+                    file.close();
+                }
+                catch (IOException e)
+                {
+                    System.out.println(e.getMessage());
+                }
 
-                HardDiskSector givenSector = getEmptySector();
                 givenSector.setDado(aux);
                 lista.inserir(givenSector.getiD());
             }
@@ -87,7 +113,19 @@ public class HardDisk implements Sata {
                     aux[i] = 0;
             }
 
-            HardDiskSector givenSector = getEmptySector();
+            try
+            {
+                ObjectOutputStream file = new ObjectOutputStream(new FileOutputStream(fileName));
+                for (byte inter : aux) {
+                    file.writeByte(inter);
+                }
+                file.close();
+            }
+            catch (IOException e)
+            {
+                System.out.println(e.getMessage());
+            }
+
             givenSector.setDado(aux);
             lista.inserir(givenSector.getiD());
         }
@@ -141,8 +179,9 @@ public class HardDisk implements Sata {
             {
                 for (HardDiskSector diskSector: diskTrack.getSectorList())
                 {
-                    if (diskSector.getDado() == null)
+                    if (diskSector.getDado()[0] == -1)
                         qntty++;
+
                 }
 
             }
@@ -151,5 +190,52 @@ public class HardDisk implements Sata {
         //System.out.println(qntty);
         qntty = qntty * sectorSize;
         return qntty;
+    }
+
+    public long espacoOcupado() {
+        long qntty=0;
+        for (HardDiskHead diskHead: diskHeadList)
+        {
+            for (HardDiskTrack diskTrack: diskHead.getDiskTrackList())
+            {
+                for (HardDiskSector diskSector: diskTrack.getSectorList())
+                {
+                    if (diskSector.getDado()[0] != -1)
+                        qntty++;
+
+                }
+            }
+        }
+        //System.out.println(qntty);
+        qntty = qntty * sectorSize;
+        return qntty;
+    }
+    public void boot()
+    {
+        //ByteArrayInputStream Baos = new ByteArrayInputStream();
+
+        for (HardDiskHead diskHead: diskHeadList)
+        {
+            for (HardDiskTrack diskTrack: diskHead.getDiskTrackList())
+            {
+                for (HardDiskSector diskSector: diskTrack.getSectorList())
+                {
+                    String fileName = diskSector.getiD() + ".bin";
+                        try {
+                             Path path = Paths.get(fileName);
+                             byte[] data = Files.readAllBytes(path);
+                             diskSector.setDado(data);
+//                            Baos.write(diskSector.getDado());
+                             }
+                        catch (IOException e)
+                            {
+                           // System.out.println(e.getMessage());
+                            }
+
+                }
+
+            }
+
+        }
     }
 }
