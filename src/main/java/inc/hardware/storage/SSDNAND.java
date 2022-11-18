@@ -20,4 +20,11 @@ public class SSDNAND {
             sectorList.add(new SSDSectors(Long.valueOf(Id),Integer.parseInt(l)));
         }
     }
+    public SSDSectors freeSector()
+    {
+        SSDSectors free = null;
+        for (sectorList s : sector) {
+            sectors.
+        }
+    }
 }
