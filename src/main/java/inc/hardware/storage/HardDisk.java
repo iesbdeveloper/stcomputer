@@ -138,7 +138,6 @@ public class HardDisk implements Sata {
 
         ByteArrayOutputStream Baos = new ByteArrayOutputStream();
 
-
         while (dado != null)
         {
             for (HardDiskHead diskHead: diskHeadList)

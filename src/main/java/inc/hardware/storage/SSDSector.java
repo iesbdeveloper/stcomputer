@@ -1,11 +1,11 @@
 package inc.hardware.storage;
 
-public class SSDSectors {
+public class SSDSector {
     private final long iD;
     private byte dado[];
     private final int size;
 
-    public SSDSectors(long iD, int size) {
+    public SSDSector(long iD, int size) {
         this.iD = iD;
         this.size = size;
         this.dado = new byte[size];
