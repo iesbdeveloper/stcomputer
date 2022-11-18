@@ -1,5 +1,5 @@
 package inc.hardware.storage;
-
+import
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,6 +8,14 @@ public class SSDNAND {
     private final List<SSDSectors> sectorList ;
     private boolean full;
     private final long sectors;
+
+    public boolean isFull() {
+        return full;
+    }
+
+    public long getSectors() {
+        return sectors;
+    }
 
     public SSDNAND(long id, long sectors, int sizeOfSector) {
         this.id = id;
@@ -18,6 +26,13 @@ public class SSDNAND {
         {
             String Id = String.valueOf(id) + String.valueOf(sector);
             sectorList.add(new SSDSectors(Long.valueOf(Id),Integer.parseInt(l)));
+        }
+    }
+    public SSDSectors freeSector()
+    {
+        SSDSectors free = null;
+        for (sectorList s : sector) {
+            sectors.
         }
     }
 }

@@ -8,20 +8,20 @@ import java.util.List;
 
 public class SSDControler implements Sata {
     private final long id;
-    private final long NANADSize;
+    private final long NANDSize;
     private final long size;
     private final List<SSDNAND> ssdnandList;
     private final long SectorSize;
 
-    public SSDControler(long id, long NANADSize,long size,int sectorsize) {
+    public SSDControler(long id, long NANDSize,long size,int sectorsize) {
         this.id = id;
-        this.NANADSize = NANADSize;
+        this.NANDSize = NANDSize;
         this.size = size;
         this.SectorSize = sectorsize;
         this.ssdnandList = new LinkedList<>();
-        for (int i = 0; i < size/NANADSize; i++) {
+        for (int i = 0; i < size/NANDSize; i++) {
 
-            ssdnandList.add(new SSDNAND(i,NANADSize/sectorsize,sectorsize));
+            ssdnandList.add(new SSDNAND(i,NANDSize/sectorsize,sectorsize));
         }
 
 
@@ -60,8 +60,8 @@ public class SSDControler implements Sata {
         return id;
     }
 
-    public long getNANADSize() {
-        return NANADSize;
+    public long getNANDSize() {
+        return NANDSize;
     }
 
     public long getSize() {
