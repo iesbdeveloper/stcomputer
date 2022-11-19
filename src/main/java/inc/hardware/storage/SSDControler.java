@@ -68,12 +68,46 @@ public class SSDControler implements Sata {
 
     @Override
     public long espacoLivre() {
-        return 0;
+        long qntty=0;
+        long qnttyS = 0;
+        for (SSDNAND s: ssdnandList) {
+            if (s.isFull() == false)
+            {
+                qnttyS++;
+            }
+            else {
+                for (SSDSector t : s.getSectorList()) {
+                    if (t.getDado()[0] == -1) {
+                        qntty++;
+                    }
+                }
+            }
+        }
+        //System.out.println(qntty);
+        qntty = qntty * getSectorSize() +(qnttyS * getNANADSize());
+        return qntty;
     }
 
     @Override
     public long espacoOcupado() {
-        return 0;
+        long qntty=0;
+        long qnttyS = 0;
+        for (SSDNAND s: ssdnandList) {
+            if (s.isFull() == true)
+            {
+                qnttyS++;
+            }
+            else {
+                for (SSDSector t : s.getSectorList()) {
+                    if (t.getDado()[0] != -1) {
+                        qntty++;
+                    }
+                }
+            }
+        }
+        //System.out.println(qntty);
+        qntty = qntty * getSectorSize() +(qnttyS * getNANADSize());
+        return qntty;
     }
 
     public long getSectorSize() {
@@ -91,4 +125,6 @@ public class SSDControler implements Sata {
     public long getSize() {
         return size;
     }
+
+
 }
