@@ -2,6 +2,7 @@ package inc.hardware.motherboard;
 
 import inc.hardware.exception.VideoNotFoundException;
 import inc.hardware.interfaces.*;
+import inc.hardware.motherboard.chipset.m1.UsbController;
 import inc.hardware.sound.Beep;
 import inc.hardware.video.OnboardVideo;
 
@@ -33,10 +34,18 @@ public class PAsusMotherboard implements Motherboard {
     @Override
     public void connectUsb(Usb peripheral) {
 
+        UsbController.connectUsb(usb1);
+        UsbController.connectUsb(usb2);
+        UsbController.connectUsb(usb3);
+
     }
 
     @Override
     public void removeUsb(Usb slot) {
+
+        UsbController.removeUsb(usb1);
+        UsbController.removeUsb(usb2);
+        UsbController.removeUsb(usb3);
 
     }
 

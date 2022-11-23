@@ -7,13 +7,13 @@ import java.util.List;
 
 public class UsbController {
 
-    List<Usb> usb = new ArrayList<>();
+    static List<Usb> usb = new ArrayList<>();
 
-    public void connectUsb(Usb peripheral){
+    public static void connectUsb(Usb peripheral){
         usb.add(peripheral);
     }
 
-    public void removeUsb(Usb peripheral){
+    public static void removeUsb(Usb peripheral){
         usb.remove(peripheral);
     }
 
