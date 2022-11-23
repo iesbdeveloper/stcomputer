@@ -192,7 +192,7 @@ import inc.hardware.interfaces.LGA;
  *
  */
 
-public class PintelP1 implements LGA {
+public class PintelP1 {
 
     enum Instructions {
         I00E0, I00EE, I0nnn, I1nnn, I2nnn, I3xkk, I4xkk, I5xy0, I6xkk, I7xkk, I8xy0, I8xy1, I8xy2, I8xy3,
