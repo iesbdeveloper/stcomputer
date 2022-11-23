@@ -1,6 +1,7 @@
 package inc.hardware.input;
 
 import inc.hardware.interfaces.KeyboardListener;
+import inc.hardware.interfaces.PCIE16X;
 import inc.hardware.interfaces.Usb;
 
 import java.awt.event.KeyEvent;
@@ -39,4 +40,10 @@ public class Keyboard implements KeyListener, Usb {
     public void removeListener(KeyboardListener listener) {
         keyboardListeners.remove(listener);
     }
+
+    @Override
+    public PeripheralType getType(){
+        return PeripheralType.KeyBoard;
+    }
+
 }
