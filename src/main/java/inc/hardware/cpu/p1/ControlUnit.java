@@ -3,7 +3,7 @@ package inc.hardware.cpu.p1;
 import inc.hardware.cpu.p1.instructions.*;
 import inc.hardware.memory.Memory1S;
 
-public class ControlUnit {
+public class ControlUnit implements LGA{
 
     /* instancia a classe RegisterBank */
     private RegisterBank registerBank;
