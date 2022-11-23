@@ -16,6 +16,9 @@ public class HardDiskController {
     public void connectSata(Sata peripheral) {
         hd.add(peripheral);
     }
+    public void removeSata(Sata peripheral) {
+        hd.remove(peripheral);
+    }
 
     public No<Long> write(int index, byte[] dado) {
         Sata x = hd.get(index);
@@ -37,7 +40,5 @@ public class HardDiskController {
         return x.espacoTotal();
     }
 
-    public void removeSata(Sata peripheral) {
-        hd.remove(peripheral);
-    }
+
 }
