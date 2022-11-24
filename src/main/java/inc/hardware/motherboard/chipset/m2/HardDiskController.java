@@ -1,4 +1,4 @@
-package inc.hardware.motherboard.chipset.m1;
+package inc.hardware.motherboard.chipset.m2;
 
 import inc.hardware.interfaces.Sata;
 import inc.hardware.so.FileSystem.No;

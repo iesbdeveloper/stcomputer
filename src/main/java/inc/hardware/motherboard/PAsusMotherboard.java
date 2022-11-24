@@ -2,10 +2,10 @@ package inc.hardware.motherboard;
 
 import inc.hardware.exception.VideoNotFoundException;
 import inc.hardware.interfaces.*;
-import inc.hardware.motherboard.chipset.m1.HardDiskController;
+import inc.hardware.motherboard.chipset.m2.HardDiskController;
 import inc.hardware.motherboard.chipset.m1.MemoryController;
 import inc.hardware.motherboard.chipset.m1.PCIE16XController;
-import inc.hardware.motherboard.chipset.m1.UsbController;
+import inc.hardware.motherboard.chipset.m2.UsbController;
 import inc.hardware.sound.Beep;
 import inc.hardware.video.OnboardVideo;
 
@@ -13,18 +13,23 @@ import java.awt.*;
 
 public class PAsusMotherboard implements Motherboard {
 
-    private PCIE16X pcie1 = new OnboardVideo();
-    private PCIE16X pcie2;
-    private PCIE16X pcie3;
-    private PCIE16X onboardVideo;
+    private PCIE16X pcieSlot1 = new OnboardVideo();
+    private PCIE16X pcieSlot2;
+    private PCIE16X pcieSlot3;
+    private PCIE16X onboardVideoSlot;
 
-    private Usb usb1;
-    private Usb usb2;
-    private Usb usb3;
+    private Usb usbSlot1;
+    private Usb usbSlot2;
+    private Usb usbSlot3;
+
+    private Sata sataSlot1;
+    private Sata sataSlot2;
+
+    private Memory memorySlot1;
+    private Memory memorySlot2;
+    private Memory memorySlot3;
 
     private final Sound beep;
-
-    PAsusMotherboard board = new PAsusMotherboard();
     public PAsusMotherboard() {
         beep = new Beep();
     }
