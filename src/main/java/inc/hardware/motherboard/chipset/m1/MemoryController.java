@@ -8,17 +8,17 @@ import java.util.List;
 
 public class MemoryController {
 
-    List<Memory> ddr = new ArrayList<>();
+    static List<Memory> ddr = new ArrayList<>();
 
     public List<Memory> getDdr(){
         return ddr;
     }
 
-    public void connectMemory(Memory peripheral){
+    public static void connectMemory(Memory peripheral){
         ddr.add(peripheral);
     }
 
-    public void removeMemory(Memory peripheral){
+    public static void removeMemory(Memory peripheral){
         ddr.remove(peripheral);
     }
 

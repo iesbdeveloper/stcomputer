@@ -7,16 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HardDiskController {
-    List<Sata> hd = new ArrayList<>();
+    static List<Sata> hd = new ArrayList<>();
 
     public List<Sata> getHd() {
         return hd;
     }
 
-    public void connectSata(Sata peripheral) {
+    public static void connectSata(Sata peripheral) {
         hd.add(peripheral);
     }
-    public void removeSata(Sata peripheral) {
+    public static void removeSata(Sata peripheral) {
         hd.remove(peripheral);
     }
 

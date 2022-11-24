@@ -7,13 +7,13 @@ import java.util.List;
 
 public class PCIE16XController {
 
-    List<PCIE16X> pcie16x = new ArrayList<>();
+    static List<PCIE16X> pcie16x = new ArrayList<>();
 
-    public void connectPcie16x(PCIE16X peripheral){
+    public static void connectPcie16x(PCIE16X peripheral){
         pcie16x.add(peripheral);
     }
 
-    public void removePcie16x(PCIE16X peripheral){
+    public static void removePcie16x(PCIE16X peripheral){
         pcie16x.remove(peripheral);
     }
 }
