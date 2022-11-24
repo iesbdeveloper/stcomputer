@@ -122,7 +122,6 @@ public class SSDControler implements Sata {
             }catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
             dado = dado.getProximo();
         }
 
