@@ -2,6 +2,7 @@ package inc.hardware.motherboard;
 
 import inc.hardware.exception.VideoNotFoundException;
 import inc.hardware.interfaces.*;
+import inc.hardware.motherboard.chipset.m1.CpuController;
 import inc.hardware.motherboard.chipset.m2.HardDiskController;
 import inc.hardware.motherboard.chipset.m1.MemoryController;
 import inc.hardware.motherboard.chipset.m1.PCIE16XController;
@@ -29,6 +30,7 @@ public class PAsusMotherboard implements Motherboard {
     private Memory memorySlot2;
     private Memory memorySlot3;
 
+    public PAsusMotherboard board = new PAsusMotherboard();
     private final Sound beep;
     public PAsusMotherboard() {
         beep = new Beep();
@@ -83,12 +85,16 @@ public class PAsusMotherboard implements Motherboard {
     }
 
     @Override
-    public void connectCpu(LGA cpu) {
+    public void connectCpu(LGA peripheral) {
+
+        CpuController.connectCpu(peripheral);
 
     }
 
     @Override
     public void removeCpu() {
+
+        CpuController.removeCpu();
 
     }
 
