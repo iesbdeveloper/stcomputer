@@ -9,7 +9,7 @@ import java.util.List;
 public class HardDiskController {
     static List<Sata> hd = new ArrayList<>();
 
-    public List<Sata> getHd() {
+    public static List<Sata> getHd() {
         return hd;
     }
 
@@ -20,12 +20,12 @@ public class HardDiskController {
         hd.remove(peripheral);
     }
 
-    public No<Long> write(int index, byte[] dado) {
+    public static No<Long> write(int index, byte[] dado) {
         Sata x = hd.get(index);
         return x.write(dado);
     }
 
-    public byte[] read(int index, No<Long> dado) {
+    public static byte[] read(int index, No<Long> dado) {
         Sata x = hd.get(index);
         return x.read(dado);
     }

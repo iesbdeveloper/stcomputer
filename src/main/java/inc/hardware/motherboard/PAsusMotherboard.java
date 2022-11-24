@@ -7,6 +7,7 @@ import inc.hardware.motherboard.chipset.m2.HardDiskController;
 import inc.hardware.motherboard.chipset.m1.MemoryController;
 import inc.hardware.motherboard.chipset.m1.PCIE16XController;
 import inc.hardware.motherboard.chipset.m2.UsbController;
+import inc.hardware.so.FileSystem.No;
 import inc.hardware.sound.Beep;
 import inc.hardware.video.OnboardVideo;
 
@@ -83,6 +84,18 @@ public class PAsusMotherboard implements Motherboard {
         HardDiskController.removeSata(peripheral);
 
     }
+
+    public No<Long> writeSata(int index, byte[] dado){
+
+        return HardDiskController.write(index, dado);
+    }
+
+    public byte[] ReadSata(int index, No<Long> dado){
+
+        return HardDiskController.read(index, dado);
+    }
+
+
 
     @Override
     public void connectCpu(LGA peripheral) {
