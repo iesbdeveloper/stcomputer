@@ -35,15 +35,14 @@ public class SSDNAND {
     public long getSectors() {
         return sectors;
     }
-    public SSDSector freeSector()
-    {
+    public SSDSector freeSector() {
         long count = 0;
-        for (SSDSector s : sectorList) {
+        for (SSDSector ssdSector : sectorList) {
             count++;
             full = count != sectors ? false : true;
 
-            if (s.getDado()[0] == -1) {
-                return s;
+            if (ssdSector.getDado()[0] == -1) {
+                return ssdSector;
             }
         }
         return null;

@@ -4,10 +4,7 @@ import inc.hardware.interfaces.Sata;
 import inc.hardware.so.FileSystem.ListaLigada;
 import inc.hardware.so.FileSystem.No;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -28,17 +25,16 @@ public class SSDControler implements Sata {
             ssdnandList.add(new SSDNAND(i,NANDSize/sectorsize,sectorsize));
         }
     }
-    private SSDSector getEmptySector()
-    {
+    private SSDSector getEmptySector() {
         SSDSector sector = null;
-        for (SSDNAND s : ssdnandList ) {
-            if (s.isFull() == false)
+        for (SSDNAND ssdnand : ssdnandList ) {
+            if (ssdnand.isFull() == false)
             {
-                sector = s.freeSector();
+                sector = ssdnand.freeSector();
             }
-            if (s.isFull() == true)
+            if (ssdnand.isFull() == true)
             {
-                System.out.println(s.getId());
+                System.out.println(ssdnand.getId());
             }
         }
         return sector;
@@ -119,20 +115,14 @@ public class SSDControler implements Sata {
 
         while (dado != null)
         {
-            for (SSDNAND s: ssdnandList)
-            {
-                for (SSDSector t: s.getSectorList())
-                {
-                    if (t.getiD() == dado.getElemento())
-                    {
-                        try {
-                            Baos.write(t.getDado());
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    }
-                }
+            String filename = dado.getElemento() + ".bin";
+            try{
+                InputStream arquivo = new FileInputStream(filename);
+                Baos.write(arquivo.read());
+            }catch (IOException e) {
+                throw new RuntimeException(e);
             }
+
             dado = dado.getProximo();
         }
 
@@ -148,20 +138,19 @@ public class SSDControler implements Sata {
     public long espacoLivre() {
         long qntty=0;
         long qnttyS = 0;
-        for (SSDNAND s: ssdnandList) {
-            if (s.isFull() == false)
+        for (SSDNAND ssdnand: ssdnandList) {
+            if (ssdnand.isFull() == false)
             {
                 qnttyS++;
             }
             else {
-                for (SSDSector t : s.getSectorList()) {
-                    if (t.getDado()[0] == -1) {
+                for (SSDSector ssdSector : ssdnand.getSectorList()) {
+                    if (ssdSector.getDado()[0] == -1) {
                         qntty++;
                     }
                 }
             }
         }
-        //System.out.println(qntty);
         qntty = qntty * getSectorSize() +(qnttyS * getNANDSize());
         return qntty;
     }
@@ -170,14 +159,14 @@ public class SSDControler implements Sata {
     public long espacoOcupado() {
         long qntty=0;
         long qnttyS = 0;
-        for (SSDNAND s: ssdnandList) {
-            if (s.isFull() == true)
+        for (SSDNAND ssdnand: ssdnandList) {
+            if (ssdnand.isFull() == true)
             {
                 qnttyS++;
             }
             else {
-                for (SSDSector t : s.getSectorList()) {
-                    if (t.getDado()[0] != -1) {
+                for (SSDSector ssdSector : ssdnand.getSectorList()) {
+                    if (ssdSector.getDado()[0] != -1) {
                         qntty++;
                     }
                 }
@@ -203,6 +192,5 @@ public class SSDControler implements Sata {
     public long getSize() {
         return size;
     }
-
 
 }
