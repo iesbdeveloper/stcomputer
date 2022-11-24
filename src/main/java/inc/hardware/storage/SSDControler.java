@@ -1,10 +1,13 @@
 package inc.hardware.storage;
 
 import inc.hardware.interfaces.Sata;
+import inc.hardware.so.FileSystem.ListaLigada;
 import inc.hardware.so.FileSystem.No;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -43,7 +46,71 @@ public class SSDControler implements Sata {
 
     @Override
     public No<Long> write(byte[] dado) {
-        return null;
+
+        if (espacoLivre() == 0){
+            return null;
+        }
+        SSDSector givenSector = getEmptySector();
+        String fileName =  givenSector.getiD() + ".bin";
+
+        ListaLigada<Long> lista = new ListaLigada<>();
+        byte[] aux = new byte[(byte)SectorSize];
+
+        if(dado.length > SectorSize){
+            double qttySector = dado.length / SectorSize;
+
+            for(double j=0; j<qttySector; j++)
+            {
+                int k=0;
+
+                if(j>0){
+                    k = (int) (SectorSize * j);
+                }
+
+                for(int i=0; i<SectorSize; i++){
+                    if(dado[i+k] != 0)
+                        aux[i] = dado[i+k];
+                    else
+                        aux[i] = 0;
+                }
+                try{
+                    ObjectOutputStream file = new ObjectOutputStream(new FileOutputStream(fileName));
+                    for (byte inter : aux) {
+                        file.writeByte(inter);
+                    }
+                    file.close();
+                }
+                catch (IOException e){
+                    System.out.println(e.getMessage());
+                }
+
+                givenSector.setDado(aux);
+                lista.inserir(givenSector.getiD());
+            }
+        }
+        else{
+            for (int i=0; i < dado.length; i++){
+                if(dado[i] != 0)
+                    aux[i] = dado[i];
+                else
+                    aux[i] = 0;
+            }
+
+            try{
+                ObjectOutputStream file = new ObjectOutputStream(new FileOutputStream(fileName));
+                for (byte inter : aux) {
+                    file.writeByte(inter);
+                }
+                file.close();
+            }
+            catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+            givenSector.setDado(aux);
+            lista.inserir(givenSector.getiD());
+        }
+
+        return lista.recuperarNo(0);
     }
 
     @Override
@@ -74,7 +141,7 @@ public class SSDControler implements Sata {
 
     @Override
     public long espacoTotal() {
-        return 0;
+        return this.size;
     }
 
     @Override
