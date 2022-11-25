@@ -39,6 +39,9 @@ public class FInstruction implements InstructionOperations {
             case 0x0018:
                 registerBank.som = registerBank.v[x];
                 break;
+            case 0x001E:
+                registerBank.i = (short) (registerBank.i + registerBank.v[x]);
+                break;
             default:
         }
     }
