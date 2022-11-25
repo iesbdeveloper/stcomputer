@@ -9,13 +9,10 @@ import java.util.List;
 public class HardDiskController {
     static List<Sata> hd = new ArrayList<>();
 
-    public static List<Sata> getHd() {
-        return hd;
-    }
-
     public static void connectSata(Sata peripheral) {
         hd.add(peripheral);
     }
+
     public static void removeSata(Sata peripheral) {
         hd.remove(peripheral);
     }

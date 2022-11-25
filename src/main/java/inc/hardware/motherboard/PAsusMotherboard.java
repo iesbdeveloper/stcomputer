@@ -40,6 +40,12 @@ public class PAsusMotherboard implements Motherboard {
     @Override
     public Dimension getVideoResolution() throws VideoNotFoundException {
         //TODO: Ask to video card!!
+        Dimension Dimension;
+
+        Dimension = OnboardVideo.getVideoResolution();
+
+        return Dimension;
+
         throw new VideoNotFoundException();
     }
 
