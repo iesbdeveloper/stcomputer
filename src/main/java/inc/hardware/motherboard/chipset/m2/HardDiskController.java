@@ -30,12 +30,12 @@ public class HardDiskController {
         return x.read(dado);
     }
 
-    public Long getFreeSpaceHD(int index) {
+    public static Long getFreeSpaceHD(int index) {
         Sata x = hd.get(index);
         return x.espacoLivre();
     }
 
-    public Long getSizeHD(int index) {
+    public static Long getSizeHD(int index) {
         Sata x = hd.get(index);
         return x.espacoTotal();
     }

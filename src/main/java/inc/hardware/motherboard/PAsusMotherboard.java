@@ -45,84 +45,69 @@ public class PAsusMotherboard implements Motherboard {
 
     @Override
     public void connectUsb(Usb peripheral) {
-
         UsbController.connectUsb(peripheral);
-
     }
 
     @Override
     public void removeUsb(Usb peripheral) {
-
         UsbController.removeUsb(peripheral);
-
     }
 
     @Override
     public void connectPcie(PCIE16X peripheral) {
-
         PCIE16XController.connectPcie16x(peripheral);
-
     }
 
     @Override
     public void removePcie(PCIE16X peripheral) {
-
         PCIE16XController.removePcie16x(peripheral);
-
     }
 
     @Override
     public void connectSata(Sata peripheral) {
-
         HardDiskController.connectSata(peripheral);
-
     }
 
     @Override
     public void removeSata(Sata peripheral) {
-
         HardDiskController.removeSata(peripheral);
 
     }
 
     public No<Long> writeSata(int index, byte[] dado){
-
         return HardDiskController.write(index, dado);
     }
 
     public byte[] ReadSata(int index, No<Long> dado){
-
         return HardDiskController.read(index, dado);
     }
 
+    public Long getFreeSpaceHD(int index){
+        return HardDiskController.getFreeSpaceHD(index);
+    }
 
+    public Long getSizeHD(int index){
+        return HardDiskController.getSizeHD(index);
+    }
 
     @Override
     public void connectCpu(LGA peripheral) {
-
         CpuController.connectCpu(peripheral);
-
     }
 
     @Override
     public void removeCpu() {
-
         CpuController.removeCpu();
-
     }
 
     @Override
     public void connectMemory(Memory peripheral) {
-
         MemoryController.connectMemory(peripheral);
-
     }
 
     @Override
     public void removeMemory(Memory peripheral) {
-
         MemoryController.removeMemory(peripheral);
-
     }
 
 }
