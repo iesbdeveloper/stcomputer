@@ -38,8 +38,35 @@ public class EightInstruction implements InstructionOperations {
                 registerBank.v[x] = (byte)(registerBank.v[x] ^ registerBank.v[y]);
                 break;
             case 0x4:
+                byte sumByte = (byte) (registerBank.v[x] + registerBank.v[y]);
+
+                if(sumByte > 255){
+                    registerBank.v[0xF] = 0x1;
+                } else {
+                    registerBank.v[0xF] = 0x0;
+                }
+
+                registerBank.v[x] = sumByte;
             case 0x5:
+                byte subByte = (byte) (registerBank.v[x] + registerBank.v[y]);
+
+                if(registerBank.v[x] > registerBank.v[y]){
+                    registerBank.v[0xF] = 0x1;
+                } else {
+                    registerBank.v[0xF] = 0x0;
+                }
+
+                registerBank.v[x] = subByte;
             case 0x6:
+                byte mostInsign = (byte) (registerBank.v[x] & 0x01);
+
+                if(mostInsign == 0x1){
+                    registerBank.v[0xF] = 0x1;
+                } else {
+                    registerBank.v[0xF] = 0x0;
+                }
+
+                registerBank.v[x] = (byte) (registerBank.v[x] / 2);
             case 0x7:
             case 0xE:
             default:
