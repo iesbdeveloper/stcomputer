@@ -36,6 +36,8 @@ public interface Motherboard {
     void connectPcie(PCIE16X peripheral);
     void removePcie(PCIE16X slot);
 
+    PCIE16X getVideoPCI();
+
     void connectSata(Sata peripheral);
     void removeSata(Sata slot);
 

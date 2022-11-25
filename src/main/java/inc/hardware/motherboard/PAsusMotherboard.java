@@ -15,21 +15,23 @@ import java.awt.*;
 
 public class PAsusMotherboard implements Motherboard {
 
-    //private PCIE16X pcieSlot1 = new OnboardVideo();
-    //private PCIE16X pcieSlot2;
-    //private PCIE16X pcieSlot3;
-    //private PCIE16X onboardVideoSlot;
+    private PCIE16X pcieSlot1 = new OnboardVideo();
+    private PCIE16X pcieSlot2;
+    private PCIE16X pcieSlot3;
+    private PCIE16X onboardVideoSlot;
 
-    //private Usb usbSlot1;
-    //private Usb usbSlot2;
-    //private Usb usbSlot3;
+    private Usb usbSlot1;
 
-    //private Sata sataSlot1;
-    //private Sata sataSlot2;
+    private Sata sataSlot1;
+    private Sata sataSlot2;
 
-    //private Memory memorySlot1;
-    //private Memory memorySlot2;
-    //private Memory memorySlot3;
+    private Memory memorySlot1;
+    private Memory memorySlot2;
+
+    UsbController usbController;
+    HardDiskController hardDiskController;
+    PCIE16XController pcie16XController;
+    MemoryController memoryController;
 
     public PAsusMotherboard board = new PAsusMotherboard();
     private final Sound beep;
@@ -39,19 +41,15 @@ public class PAsusMotherboard implements Motherboard {
 
     @Override
     public Dimension getVideoResolution() throws VideoNotFoundException {
-        //TODO: Ask to video card!!
-        Dimension Dimension;
-
-        Dimension = OnboardVideo.getVideoResolution();
-
-        return Dimension;
-
-        throw new VideoNotFoundException();
+        try { VideoPCIE16X videoSlot;
+            videoSlot = getVideoPCI();
+            return videoSlot.getVideoResolution(); }
+        catch(Exception e){ throw new VideoNotFoundException(); }
     }
 
     @Override
     public void connectUsb(Usb peripheral) {
-        UsbController.connectUsb(peripheral);
+        UsbController.connectUsb(peripheral);;
     }
 
     @Override
@@ -67,6 +65,11 @@ public class PAsusMotherboard implements Motherboard {
     @Override
     public void removePcie(PCIE16X peripheral) {
         PCIE16XController.removePcie16x(peripheral);
+    }
+
+    @Override
+    public VideoPCIE16X getVideoPCI() {
+        return PCIE16XController.getVideoPCI();
     }
 
     @Override
