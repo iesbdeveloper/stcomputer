@@ -68,6 +68,13 @@ public class EightInstruction implements InstructionOperations {
 
                 registerBank.v[x] = (byte) (registerBank.v[x] / 2);
             case 0x7:
+                byte subN = (byte) (registerBank.v[y] - registerBank.v[x]);
+
+                if(registerBank.v[y] > registerBank.v[x]){
+                    registerBank.v[0xF] = 0x1;
+                } else {
+                    registerBank.v[0xF] = 0x0;
+                }
             case 0xE:
             default:
                 throw new RuntimeException("Instrução inválida.");
