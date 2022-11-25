@@ -191,6 +191,7 @@ public class HardDisk implements Sata {
         return qntty;
     }
 
+    @Override
     public long espacoOcupado() {
         long qntty=0;
         for (HardDiskHead diskHead: diskHeadList)

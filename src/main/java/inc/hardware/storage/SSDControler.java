@@ -1,10 +1,12 @@
 package inc.hardware.storage;
 
+import com.sun.imageio.plugins.common.InputStreamAdapter;
 import inc.hardware.interfaces.Sata;
 import inc.hardware.so.FileSystem.ListaLigada;
 import inc.hardware.so.FileSystem.No;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -34,7 +36,7 @@ public class SSDControler implements Sata {
             }
             if (ssdnand.isFull() == true)
             {
-                System.out.println(ssdnand.getId());
+               // System.out.println(ssdnand.getId());
             }
         }
         return sector;
@@ -47,10 +49,10 @@ public class SSDControler implements Sata {
             return null;
         }
         SSDSector givenSector = getEmptySector();
-        String fileName =  givenSector.getiD() + ".bin";
+        String fileName =  "src//main//java//"+givenSector.getiD() + ".bin";
 
         ListaLigada<Long> lista = new ListaLigada<>();
-        byte[] aux = new byte[(byte)SectorSize];
+        byte[] aux = new byte[(int)SectorSize];
 
         if(dado.length > SectorSize){
             double qttySector = dado.length / SectorSize;
@@ -77,7 +79,7 @@ public class SSDControler implements Sata {
                     file.close();
                 }
                 catch (IOException e){
-                    System.out.println(e.getMessage());
+                    //System.out.println(e.getMessage());
                 }
 
                 givenSector.setDado(aux);
@@ -100,7 +102,7 @@ public class SSDControler implements Sata {
                 file.close();
             }
             catch (IOException e) {
-                System.out.println(e.getMessage());
+                //System.out.println(e.getMessage());
             }
             givenSector.setDado(aux);
             lista.inserir(givenSector.getiD());
@@ -115,10 +117,12 @@ public class SSDControler implements Sata {
 
         while (dado != null)
         {
-            String filename = dado.getElemento() + ".bin";
+            String filename = "src//main//java//" + String.valueOf(dado.getElemento()) + ".bin";
+
             try{
-                InputStream arquivo = new FileInputStream(filename);
-                Baos.write(arquivo.read());
+                File source = new File(filename);
+                byte[] bytes = Files.readAllBytes(source.toPath());
+                Baos.write(bytes);
             }catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -138,17 +142,11 @@ public class SSDControler implements Sata {
         long qntty=0;
         long qnttyS = 0;
         for (SSDNAND ssdnand: ssdnandList) {
-            if (ssdnand.isFull() == false)
-            {
-                qnttyS++;
-            }
-            else {
                 for (SSDSector ssdSector : ssdnand.getSectorList()) {
                     if (ssdSector.getDado()[0] == -1) {
                         qntty++;
                     }
                 }
-            }
         }
         qntty = qntty * getSectorSize() +(qnttyS * getNANDSize());
         return qntty;

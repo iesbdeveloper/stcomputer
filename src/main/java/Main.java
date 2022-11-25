@@ -1,5 +1,6 @@
 import inc.hardware.so.FileSystem.No;
 import inc.hardware.storage.HardDisk10M;
+import inc.hardware.storage.SSD32M;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -7,7 +8,7 @@ import java.util.Scanner;
 public class Main {
     private static Scanner scanner = new Scanner(System.in);
     private static Random random = new Random(1);
-    private static HardDisk10M disk10M = new HardDisk10M();
+    private static SSD32M ssd32M = new SSD32M();
     public static void main(String[] args) {
 
 //        byte[] u = randomByte();
@@ -21,14 +22,15 @@ public class Main {
     }
     private static void dbyte(No<Long> nl)
     {
-        for (byte o : disk10M.read(nl)) {
+        for (byte o : ssd32M.read(nl)) {
         System.out.print(o + "");
     }
         System.out.println("\n");
     }
     private static byte[] randomByte()
     {
-        byte[] b = new byte[512];
+        int u = random.nextInt(512);
+        byte[] b = new byte[u];
         int count = 0;
         while (count != b.length )
         {
@@ -51,8 +53,8 @@ public class Main {
                 case 1:
                 {
                     byte[] o = randomByte();
-                    No<Long> no = disk10M.write(o);
-                    System.out.println("\nos espacos  \ntotal " + disk10M.espacoTotal() + " \nlivre " + disk10M.espacoLivre() );
+                    No<Long> no = ssd32M.write(o);
+                    System.out.println("\nos espacos  \ntotal " + ssd32M.espacoTotal() + " \nlivre " + ssd32M.espacoLivre() +" \n ocupado " + ssd32M.espacoOcupado() );
                     dbyte(no);
                 }
             }
