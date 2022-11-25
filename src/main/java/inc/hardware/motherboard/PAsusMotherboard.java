@@ -15,21 +15,21 @@ import java.awt.*;
 
 public class PAsusMotherboard implements Motherboard {
 
-    private PCIE16X pcieSlot1 = new OnboardVideo();
-    private PCIE16X pcieSlot2;
-    private PCIE16X pcieSlot3;
-    private PCIE16X onboardVideoSlot;
+    //private PCIE16X pcieSlot1 = new OnboardVideo();
+    //private PCIE16X pcieSlot2;
+    //private PCIE16X pcieSlot3;
+    //private PCIE16X onboardVideoSlot;
 
-    private Usb usbSlot1;
-    private Usb usbSlot2;
-    private Usb usbSlot3;
+    //private Usb usbSlot1;
+    //private Usb usbSlot2;
+    //private Usb usbSlot3;
 
-    private Sata sataSlot1;
-    private Sata sataSlot2;
+    //private Sata sataSlot1;
+    //private Sata sataSlot2;
 
-    private Memory memorySlot1;
-    private Memory memorySlot2;
-    private Memory memorySlot3;
+    //private Memory memorySlot1;
+    //private Memory memorySlot2;
+    //private Memory memorySlot3;
 
     public PAsusMotherboard board = new PAsusMotherboard();
     private final Sound beep;
