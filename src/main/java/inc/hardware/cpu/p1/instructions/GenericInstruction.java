@@ -77,6 +77,8 @@ public class GenericInstruction implements InstructionOperations{
                 registerBank.pc = (short) ( registerBank.v[0] & 0xff + nnn & 0xfff);
                 break;
             case 0xC:
+                byte random = (byte) secureRandom.nextInt(255);
+                registerBank.v[x] = (byte)(random & kk);
                 break;
             case 0xD:
                 break;
