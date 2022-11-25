@@ -22,7 +22,7 @@ public class MemoryController {
         ddr.remove(peripheral);
     }
 
-    public byte get(int index, short address){
+    public static byte get(int index, short address){
         Memory x = ddr.get(index);
         return x.get(address);
     }

@@ -110,4 +110,10 @@ public class PAsusMotherboard implements Motherboard {
         MemoryController.removeMemory(peripheral);
     }
 
+    public byte memoryGet(int index, short address){
+
+        return MemoryController.get(index, address);
+
+    }
+
 }
