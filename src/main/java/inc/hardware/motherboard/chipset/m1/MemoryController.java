@@ -28,6 +28,7 @@ public class MemoryController {
     }
 
     public void set(int index, short address, byte content){
-
+        Memory x = ddr.get(index);
+        x.set(address, content);
     }
 }

@@ -28,11 +28,6 @@ public class PAsusMotherboard implements Motherboard {
     private Memory memorySlot1;
     private Memory memorySlot2;
 
-    UsbController usbController;
-    HardDiskController hardDiskController;
-    PCIE16XController pcie16XController;
-    MemoryController memoryController;
-
     public PAsusMotherboard board = new PAsusMotherboard();
     private final Sound beep;
     public PAsusMotherboard() {
