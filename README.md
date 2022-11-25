@@ -1,6 +1,6 @@
 # Storage Stcomputer
 
-Branch responsavel pela implementação e desenvolvimento da parte lógica de um Hard Disk para o projeto proposto na matéria de Programação Orientada a Objeto cuja a finalidade é emular um computador. O Storage tem sua estrutura de: Discos,Trilhas e setores, neste programa está sendo usado 4 discos, 305 trilhas em cada disco e 17 setores em cada trilha que há no HD, ao fim deste projeto o método de escrever deverá gravar de forma que o dado não se perca ao desligar a máquina tornando uma memória não volátil
+Branch responsavel pela implementação e desenvolvimento da parte lógica de um Hard Disk e SSD para o projeto proposto na matéria de Programação Orientada a Objeto cuja a finalidade é emular um computador. O Hard Disk tem sua estrutura de Discos,Trilhas e setores, neste programa está sendo usado 4 discos, 305 trilhas em cada disco e 17 setores em cada trilha que há no HD, já o SSD é composto por 8 Chips NANDs suportando 4MB e em cada Chip contendo 16384 Setores de 256B. Ao fim deste projeto o método de escrever deverá gravar de forma que o dado não se perca ao desligar a máquina tornando uma memória não volátil
 
 ## 🚀 Começando
 
@@ -26,15 +26,15 @@ Executando a classe "Main.java" que está dentro de src>main>java
 
 ### 🔩 Analise os testes de ponta a ponta
 
-No teste ele verifica o instanciamento de um HD
+No teste ele verifica o instanciamento de um HD/SSD
 
 Testa os métodos de gravação(write) e leitura(read) de dados e o seus recebimentos e retornos de parâmetros
 
-Também testa os métodos de retorno do espaço total do HD e o espaço livre nele
+Também testa os métodos de retorno do espaço total do HD/SSD e o espaço livre nele
 
 ## 📦 Implantação
 
-A forma de implementação de uma Hard Disk é atrás de sua interface "Sata" nela possui os métodos abstratos necessários para o funcionamento do mesmo, faça um implements Sata na classe que irá utilizar o HD
+A forma de implementação de uma Hard Disk ou SSD é através de sua interface "Sata" nela possui os métodos abstratos necessários para o funcionamento do mesmo, faça um implements Sata na classe que irá utilizar o HD ou SSD
 
 ## 🛠️ Construído com
 
