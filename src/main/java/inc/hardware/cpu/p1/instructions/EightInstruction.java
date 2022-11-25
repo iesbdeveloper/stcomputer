@@ -29,8 +29,14 @@ public class EightInstruction implements InstructionOperations {
                 registerBank.pc += 2;
                 break;
             case 0x1:
+                registerBank.v[x] = (byte)(registerBank.v[x] | registerBank.v[y]);
+                break;
             case 0x2:
+                 registerBank.v[x] = (byte)(registerBank.v[x] & registerBank.v[y]);
+                break;
             case 0x3:
+                registerBank.v[x] = (byte)(registerBank.v[x] ^ registerBank.v[y]);
+                break;
             case 0x4:
             case 0x5:
             case 0x6:
